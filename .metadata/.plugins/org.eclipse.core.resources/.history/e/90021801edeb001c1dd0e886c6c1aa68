@@ -1,0 +1,34 @@
+package com.example.shopstyle.services.validation;
+
+import javax.validation.ConstraintValidator;
+
+import com.example.shopstyle.dto.UserFormDTO;
+
+public class UserInsertValidator implements ConstraintValidator<UserInsert, UserFormDTO> {
+
+	
+	@Override
+	public boolean isValid(ClienteNewDTO objDTO, ConstraintValidatorContext context) {
+		List<FieldMessage> list = new ArrayList<>();
+
+		if(objDTO.getTipo().equals(TipoCliente.PESSOAFISICA) && !BR.isValidCPF(objDTO.getCpfOuCnpj())) {
+			list.add(new FieldMessage("cpfOuCnpj", "CPF inválido"));
+		}
+		
+		if(objDTO.getTipo().equals(TipoCliente.PESSOAJURIDICA) && !BR.isValidCNPJ(objDTO.getCpfOuCnpj())) {
+			list.add(new FieldMessage("cpfOuCnpj", "CNPJ inválido"));
+		}
+		
+		Cliente aux = clienteRepository.findByEmail(objDTO.getEmail());
+		if(aux != null) {
+			list.add(new FieldMessage("email", "Email já existe"));
+		}
+
+		for (FieldMessage e : list) {
+			context.disableDefaultConstraintViolation();
+			context.buildConstraintViolationWithTemplate(e.getMessage()).addPropertyNode(e.getFieldName())
+					.addConstraintViolation();
+		}
+		return list.isEmpty();
+	}
+}

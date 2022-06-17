@@ -1,0 +1,39 @@
+package com.example.shopstyle.entities;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.example.shopstyle.entities.enums.Gender;
+
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String firstName;
+	private String LastName;
+	private Gender sex;
+	private Integer cpf;
+	private Date birthDate;
+	private String Email;
+	private String password;
+	private Boolean active;
+	
+
+}

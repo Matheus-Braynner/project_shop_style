@@ -1,0 +1,5 @@
+package com.example.shopstyle.entities.enums;
+
+public class Gender {
+
+}

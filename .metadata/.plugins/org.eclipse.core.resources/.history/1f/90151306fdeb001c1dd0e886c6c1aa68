@@ -1,0 +1,5 @@
+package com.example.shopstyle.services.exceptions;
+
+public class DatabaseException {
+
+}

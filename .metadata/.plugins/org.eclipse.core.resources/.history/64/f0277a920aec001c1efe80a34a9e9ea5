@@ -1,0 +1,10 @@
+package com.compass.shopstyle.services.validation;
+
+
+public @interface UserInsert {
+	String message() default "Erro de validação";
+
+	Class<?>[] groups() default {};
+
+	Class<? extends Payload>[] payload() default {};
+}

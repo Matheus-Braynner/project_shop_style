@@ -1,0 +1,6 @@
+package com.compass.shopstyle.services.validation;
+
+
+public @interface UserInsert {
+
+}

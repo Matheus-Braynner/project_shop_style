@@ -1,0 +1,5 @@
+package com.example.shopstyle.services.validation;
+
+public @Interface UserInsert {
+
+}

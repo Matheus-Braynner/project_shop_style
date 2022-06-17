@@ -1,0 +1,21 @@
+package com.example.shopstyle.entities;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import com.example.shopstyle.entities.enums.Gender;
+
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	private String firstName;
+	private String LastName;
+	private Gender sex;
+	private Integer cpf;
+	private Date birthDate;
+	private String Email;
+	private String password;
+	private Boolean active;
+	
+
+}

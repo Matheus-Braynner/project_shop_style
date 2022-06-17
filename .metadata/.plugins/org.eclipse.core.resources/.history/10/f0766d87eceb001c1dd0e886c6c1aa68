@@ -1,0 +1,9 @@
+package com.example.shopstyle.services;
+
+import com.example.shopstyle.dto.UserDTO;
+import com.example.shopstyle.dto.UserFormDTO;
+
+public @interface UserService {
+
+	UserDTO findById(UserFormDTO userBody);
+}

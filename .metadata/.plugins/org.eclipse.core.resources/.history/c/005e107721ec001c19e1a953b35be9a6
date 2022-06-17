@@ -1,0 +1,6 @@
+package com.compass.shopstyle.controllers.exceptions;
+
+public class ExceptionHandler {
+
+	
+}

@@ -1,0 +1,21 @@
+package com.example.shopstyle.dto;
+
+import java.util.Date;
+
+import com.example.shopstyle.entities.enums.Gender;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+public class UserDTO {
+
+	private String firstName;
+	private String LastName;
+	private Gender sex;
+	private Date birthDate;
+	private String Email;
+
+}

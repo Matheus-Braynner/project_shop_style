@@ -1,0 +1,13 @@
+package com.example.shopstyle.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserDTO {
+
+	private String firstName;
+	private String LastName;
+}

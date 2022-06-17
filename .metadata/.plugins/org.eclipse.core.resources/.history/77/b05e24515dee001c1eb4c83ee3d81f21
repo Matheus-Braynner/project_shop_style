@@ -1,0 +1,8 @@
+package com.compass.shopstyle.config.security;
+
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+@C
+public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
+
+}

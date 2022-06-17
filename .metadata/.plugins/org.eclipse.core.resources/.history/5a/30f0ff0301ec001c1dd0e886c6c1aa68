@@ -1,0 +1,12 @@
+package com.compass.shopstyle.services;
+
+import com.compass.shopstyle.dto.UserDTO;
+import com.compass.shopstyle.dto.UserFormDTO;
+import com.compass.shopstyle.entities.User;
+
+public interface UserService {
+	
+	User insert(User user);
+	
+	UserDTO findById(Long id);
+}
