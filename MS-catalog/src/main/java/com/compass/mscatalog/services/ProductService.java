@@ -12,5 +12,7 @@ public interface ProductService {
 	ProductDTO findById(String id);
 	
 	ProductDTO insert (ProductFormDTO productObj);
+	
+	void delete(String id);
 }
 	

@@ -10769,3 +10769,30 @@ java.lang.InterruptedException
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:40:40.948
 !MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:45:46.481
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:45:46.486
+!MESSAGE classpath=139 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:45:46.490
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer false 139
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:45:46.490
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:45:46.520
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:46:00.321
+!MESSAGE exists = false open = true => deleted = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:46:00.322
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer true 0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:46:00.322
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:46:00.330
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
