@@ -52,8 +52,8 @@ public class ControllerExceptionHandler {
 	
 	
 	@ExceptionHandler(InvalidFormatException.class)
-	public ResponseEntity<StandardError> databaseException(InvalidFormatException e, HttpServletRequest request) {
-		String error = "Invalid gender, only acepts MAN or WOMAN in the field";
+	public ResponseEntity<StandardError> invalidFormat(InvalidFormatException e, HttpServletRequest request) {
+		String error = "invalid format error";
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(),
 				request.getRequestURI());

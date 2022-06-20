@@ -2,6 +2,7 @@ package com.compass.shopstyle.services;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.compass.shopstyle.dto.UserDTO;
@@ -15,6 +16,9 @@ import com.compass.shopstyle.services.exceptions.ResourceNotFoundException;
 public class UserServiceImp implements UserService {
 
 	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
 	private ModelMapper mapper;
 	
 	@Autowired
@@ -24,6 +28,7 @@ public class UserServiceImp implements UserService {
 	public UserDTO insert(UserFormDTO userBody) {
 		userBody.setId(null);
 		User user = userRepository.save(mapper.map(userBody, User.class));
+		user.setPassword(passwordEncoder.encode(userBody.getPassword()));
 		return mapper.map(user, UserDTO.class);
 	}
 	
@@ -44,14 +49,15 @@ public class UserServiceImp implements UserService {
 			user.setCpf(userBody.getCpf());
 			user.setBirthDate(userBody.getBirthDate());
 			user.setEmail(userBody.getEmail());
-			user.setPassword(userBody.getPassword());
+			user.setPassword(passwordEncoder.encode(userBody.getPassword()));
 			User userUpdated = userRepository.save(user);
 			return mapper.map(userUpdated, UserDTO.class);
 			
 	}
 	
 	public User fromDTO(UserNewFormDTO obj) {
-		return new User(obj.getId(), obj.getFirstName(), obj.getLastName(), obj.getSex(), obj.getCpf(), obj.getBirthDate(), obj.getEmail(), obj.getPassword());
+		return new User(obj.getId(), obj.getFirstName(), obj.getLastName(), obj.getSex(), obj.getCpf(), obj.getBirthDate(), obj.getEmail(), passwordEncoder.encode(obj.getPassword()), obj.getActive());
 	}
+
 	
 }

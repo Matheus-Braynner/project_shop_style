@@ -2,6 +2,9 @@ package com.compass.shopstyle.dto;
 
 import java.util.Date;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import com.compass.shopstyle.entities.User;
 import com.compass.shopstyle.entities.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -18,6 +21,7 @@ public class UserDTO {
 	private Long id;
 	private String firstName;
 	private String lastName;
+	@Enumerated(EnumType.STRING)
 	private Gender sex;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date birthDate;

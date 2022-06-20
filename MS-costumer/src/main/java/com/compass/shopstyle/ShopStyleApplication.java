@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 @EnableCaching
 public class ShopStyleApplication {
 
+	
 	@Bean
 	public ModelMapper mapper() {
 		return new ModelMapper();
@@ -19,8 +20,8 @@ public class ShopStyleApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ShopStyleApplication.class, args);
-		
-		
+	
+	
 	}
 
 }

@@ -14,7 +14,6 @@ import org.springframework.web.servlet.HandlerMapping;
 import com.compass.shopstyle.controllers.exceptions.FieldMessage;
 import com.compass.shopstyle.dto.UserNewFormDTO;
 import com.compass.shopstyle.entities.User;
-import com.compass.shopstyle.entities.enums.Gender;
 import com.compass.shopstyle.repositories.UserRepository;
 import com.compass.shopstyle.services.validation.utils.BR;
 
@@ -42,9 +41,6 @@ public class UserUpdateValidator implements ConstraintValidator<UserUpdate, User
 				list.add(new FieldMessage("cpf", "CPF inválido"));
 			}
 			
-			if(!(obj.getSex().equals(Gender.WOMAN)) || !(obj.getSex().equals(Gender.MAN))) {
-				list.add(new FieldMessage("Gender", "Invalid Gender"));
-			}
 			
 			User aux = userRepository.findByEmail(obj.getEmail());
 			if(aux != null && !(aux.getId().equals(uriId))) {

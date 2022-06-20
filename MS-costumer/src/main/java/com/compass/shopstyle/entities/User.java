@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 import com.compass.shopstyle.entities.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -45,6 +46,8 @@ public class User implements Serializable {
 	@Column(unique = true)
 	@javax.validation.constraints.Email
 	private String email;
+	@JsonIgnore
 	private String password;
+	private Boolean active;
 
 }

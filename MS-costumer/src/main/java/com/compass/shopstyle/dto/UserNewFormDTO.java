@@ -13,13 +13,12 @@ import org.hibernate.validator.constraints.Length;
 import com.compass.shopstyle.entities.User;
 import com.compass.shopstyle.entities.enums.Gender;
 import com.compass.shopstyle.services.validation.UserUpdate;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @UserUpdate
 public class UserNewFormDTO {
@@ -37,12 +36,15 @@ public class UserNewFormDTO {
 	@NotBlank(message = "obligatory field")
 	private String cpf;
 	@NotNull(message = "obligatory field")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date birthDate;
 	@NotBlank(message = "obligatory field")
 	@Email(message = "Email invalid")
 	private String email;
 	@NotBlank(message = "obligatory field")
 	private String password;
+	@NotNull(message = "obligatory field")
+	private Boolean active;
 
 	public UserNewFormDTO(User user) {
 		this.setId(null);;
@@ -53,5 +55,6 @@ public class UserNewFormDTO {
 		this.birthDate = user.getBirthDate();
 		this.email = user.getEmail();
 		this.password = user.getPassword();
+		this.active = user.getActive();
 	}
 }

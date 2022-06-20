@@ -22,13 +22,14 @@ import com.compass.shopstyle.dto.UserNewFormDTO;
 import com.compass.shopstyle.services.UserServiceImp;
 
 @RestController
-@RequestMapping(value = "/v1/users")
+@RequestMapping(value = "/v1")
 public class UserController {
 	
 	@Autowired
 	private UserServiceImp userService;
 
-	@PostMapping
+	
+	@PostMapping(value = "/users")
 	@Transactional
 	@CacheEvict(value = "getUsers", allEntries = true)
 	public ResponseEntity<UserDTO> insert(@Valid @RequestBody UserFormDTO userForm) {

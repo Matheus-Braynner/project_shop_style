@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.compass.shopstyle.controllers.exceptions.FieldMessage;
 import com.compass.shopstyle.dto.UserFormDTO;
 import com.compass.shopstyle.entities.User;
-import com.compass.shopstyle.entities.enums.Gender;
 import com.compass.shopstyle.repositories.UserRepository;
 import com.compass.shopstyle.services.validation.utils.BR;
 
@@ -30,10 +29,6 @@ public class UserInsertValidator implements ConstraintValidator<UserInsert, User
 
 			if(!BR.isValidCPF(obj.getCpf())) {
 				list.add(new FieldMessage("cpf", "Invalid CPF"));
-			}
-			
-			if(!(obj.getSex().equals(Gender.WOMAN)) || !(obj.getSex().equals(Gender.MAN))) {
-				list.add(new FieldMessage("Gender", "Invalid Gender"));
 			}
 			
 			User aux = userRepository.findByEmail(obj.getEmail());
