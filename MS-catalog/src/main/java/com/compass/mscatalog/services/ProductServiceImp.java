@@ -24,9 +24,12 @@ public class ProductServiceImp implements ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	
+	@Autowired
+	private SequenceGeneratorService sequenceService;
+	
 	@Override
 	public ProductDTO insert(ProductFormDTO productObj) {
-		productObj.setId(null);
+		productObj.setId(sequenceService.getSequenceNumber(Product.SEQUENCE_NAME));
 		Product product = productRepository.save(mapper.map(productObj, Product.class));
 		return mapper.map(product, ProductDTO.class);
 	}
@@ -39,26 +42,36 @@ public class ProductServiceImp implements ProductService {
 	}
 
 	@Override
-	public ProductDTO findById(String id) {
+	public ProductDTO findById(Long id) {
 		Product product = productRepository.findById(id)
 				.orElseThrow(() -> new ObjectNotFoundException("Object not found " + id));
 		return mapper.map(product, ProductDTO.class);
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(Long  id) {
 		try {
 			Product product = productRepository.findById(id)
-		
-				.orElseThrow(() -> new ObjectNotFoundException(id));
+				.orElseThrow(() -> new ObjectNotFoundException("Object not found " + id));
 			productRepository.delete(product);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ObjectNotFoundException(id);
+			throw new ObjectNotFoundException("Object not found " + id);
 		} catch (DatabaseException e) {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
-
 	
+	
+	@Override
+	public ProductDTO update(Long id, ProductFormDTO productObj) {
+		Product product = productRepository.findById(id)
+				.orElseThrow(() -> new ObjectNotFoundException("Object not found " + id));
+			product.setName(productObj.getName());
+			product.setDescription(productObj.getDescription());
+			product.setActive(productObj.getActive());
+			Product productUpdated = productRepository.save(product);
+			return mapper.map(productUpdated, ProductDTO.class);
+			
+	}
 
 }

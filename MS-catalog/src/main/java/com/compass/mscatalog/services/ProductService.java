@@ -9,10 +9,12 @@ public interface ProductService {
 	
 	List<ProductDTO> findAll();
 	
-	ProductDTO findById(String id);
+	ProductDTO findById(Long id);
 	
 	ProductDTO insert (ProductFormDTO productObj);
 	
-	void delete(String id);
+	void delete(Long id);
+	
+	ProductDTO update(Long id, ProductFormDTO productObj);
 }
 	

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.compass.mscatalog.entities.Product;
 
 @Repository
-public interface ProductRepository extends MongoRepository<Product, String> {
+public interface ProductRepository extends MongoRepository<Product, Long> {
 
 }

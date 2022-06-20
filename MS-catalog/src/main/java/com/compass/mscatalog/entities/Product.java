@@ -3,6 +3,7 @@ package com.compass.mscatalog.entities;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
@@ -16,14 +17,17 @@ import lombok.NoArgsConstructor;
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Transient
+	public static final String SEQUENCE_NAME="user_sequence";
+	
 	@Id
 	@EqualsAndHashCode.Include
-	private String id;
+	private Long id;
 	private String name;
 	private String description;
 	private Boolean active;
 	
-	public Product(String id, String name, String description, Boolean active) {
+	public Product(Long  id, String name, String description, Boolean active) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
