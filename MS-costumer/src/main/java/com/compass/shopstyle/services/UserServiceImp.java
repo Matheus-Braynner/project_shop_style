@@ -54,10 +54,4 @@ public class UserServiceImp implements UserService {
 			return mapper.map(userUpdated, UserDTO.class);
 			
 	}
-	
-	public User fromDTO(UserNewFormDTO obj) {
-		return new User(obj.getId(), obj.getFirstName(), obj.getLastName(), obj.getSex(), obj.getCpf(), obj.getBirthDate(), obj.getEmail(), passwordEncoder.encode(obj.getPassword()), obj.getActive());
-	}
-
-	
 }

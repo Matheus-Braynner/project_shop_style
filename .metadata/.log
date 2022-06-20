@@ -10715,3 +10715,57 @@ java.lang.InterruptedException
 	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:24:51.595
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:24:51.604
+!MESSAGE classpath=139 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:24:51.608
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer false 139
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:24:51.608
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:24:51.661
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:38:15.161
+!MESSAGE exists = false open = true => deleted = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:38:15.162
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer true 0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:38:15.162
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:38:15.189
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:40:22.381
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:40:22.386
+!MESSAGE classpath=139 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:40:22.389
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer false 139
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:40:22.389
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:40:22.417
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:40:40.939
+!MESSAGE exists = false open = true => deleted = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:40:40.940
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer true 0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:40:40.940
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:40:40.948
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]

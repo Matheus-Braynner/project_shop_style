@@ -37,14 +37,14 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(user);
 	}
 	
-	@GetMapping(value = "/{id}")
+	@GetMapping(value = "/users/{id}")
 	@Cacheable(value = "getUsers")
 	public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
 		UserDTO user = userService.findById(id);
 		return ResponseEntity.ok(user);
 	}
 	
-	@PutMapping(value = "/{id}")
+	@PutMapping(value = "/users/{id}")
 	@Transactional
 	@CacheEvict(value = "getUsers", allEntries = true)
 	public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserNewFormDTO userForm) {
