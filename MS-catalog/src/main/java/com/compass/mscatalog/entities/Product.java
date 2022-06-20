@@ -2,6 +2,9 @@ package com.compass.mscatalog.entities;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -9,9 +12,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Document
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	@EqualsAndHashCode.Include
 	private String id;
 	private String name;
