@@ -1,5 +1,6 @@
 package com.compass.shopstyle.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.EnumType;
@@ -16,7 +17,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserDTO {
+public class UserDTO implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	private String firstName;

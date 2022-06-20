@@ -10514,3 +10514,204 @@ java.lang.NullPointerException: Cannot invoke "java.util.List.sort(java.util.Com
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:02:54.613
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:02:54.619
+!MESSAGE classpath=139 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:02:54.623
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer false 139
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:02:54.624
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:02:54.658
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:03:41.421
+!MESSAGE exists = false open = true => deleted = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:03:41.421
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer true 0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:03:41.421
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:03:41.435
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:29:16.979
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:29:16.984
+!MESSAGE classpath=139 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:29:16.988
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer false 139
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:29:16.988
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:29:17.013
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:29:35.256
+!MESSAGE exists = false open = true => deleted = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:29:35.257
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer true 0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:29:35.257
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:29:35.263
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:30:15.393
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:30:15.398
+!MESSAGE classpath=139 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:30:15.401
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer false 139
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:30:15.402
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:30:15.435
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:30:50.044
+!MESSAGE exists = false open = true => deleted = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:30:50.044
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer true 0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:30:50.045
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:30:50.050
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:32:37.301
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:32:37.306
+!MESSAGE classpath=139 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:32:37.309
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer false 139
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:32:37.310
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:32:37.338
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:33:06.492
+!MESSAGE exists = false open = true => deleted = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:33:06.493
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer true 0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:33:06.493
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:33:06.498
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:34:43.325
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:34:43.329
+!MESSAGE classpath=139 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:34:43.332
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer false 139
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:34:43.332
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:34:43.365
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:35:15.746
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:35:15.749
+!MESSAGE classpath=77 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:35:15.751
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-catalog false 77
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:35:15.751
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:35:15.766
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.eclipse.lsp4e 2 0 2022-06-20 15:43:20.312
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:46:04.036
+!MESSAGE exists = false open = true => deleted = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:46:04.037
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer true 0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:46:04.037
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 15:46:04.048
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:18:25.067
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:18:25.072
+!MESSAGE classpath=139 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:18:25.076
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer false 139
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:18:25.076
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:18:25.115
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:19:37.964
+!MESSAGE exists = false open = true => deleted = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:19:37.965
+!MESSAGE buffering callback sts4.classpath.vZDTxglL MS-costumer true 0
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:19:37.965
+!MESSAGE executing callback sts4.classpath.vZDTxglL 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-06-20 16:19:37.971
+!MESSAGE executing callback sts4.classpath.vZDTxglL SUCCESS [done]
+
+!ENTRY org.eclipse.lsp4e 2 0 2022-06-20 16:19:56.609
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)

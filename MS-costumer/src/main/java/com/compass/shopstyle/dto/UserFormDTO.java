@@ -1,5 +1,6 @@
 package com.compass.shopstyle.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -23,8 +24,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @UserInsert
-public class UserFormDTO {
-
+public class UserFormDTO implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
 	
 	@NotBlank(message = "obligatory field")

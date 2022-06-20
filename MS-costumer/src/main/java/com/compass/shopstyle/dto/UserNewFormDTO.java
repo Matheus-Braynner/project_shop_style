@@ -1,5 +1,6 @@
 package com.compass.shopstyle.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.EnumType;
@@ -21,8 +22,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @UserUpdate
-public class UserNewFormDTO {
-
+public class UserNewFormDTO implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
 	@NotBlank(message = "obligatory field")
 	@Length(min = 3, message = "the size have to be between 5 and 20 characters")
