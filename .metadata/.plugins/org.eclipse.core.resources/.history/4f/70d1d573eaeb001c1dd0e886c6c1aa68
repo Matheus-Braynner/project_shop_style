@@ -1,5 +1,0 @@
-package com.example.shopstyle.exceptions;
-
-public class ResourceNotFound extends RuntimeException {
-
-}

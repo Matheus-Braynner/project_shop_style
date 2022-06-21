@@ -1,9 +1,0 @@
-package com.example.shopstyle.services.validation;
-
-import javax.validation.ConstraintValidator;
-
-import com.example.shopstyle.dto.UserFormDTO;
-
-public class UserInsertValidator implements ConstraintValidator<UserInsert, UserFormDTO> {
-
-}

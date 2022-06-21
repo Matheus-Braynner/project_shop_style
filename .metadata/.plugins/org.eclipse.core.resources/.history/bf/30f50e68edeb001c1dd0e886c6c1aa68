@@ -1,5 +1,0 @@
-package com.example.shopstyle.controllers.exceptions;
-
-public class ValidationError {
-
-}
