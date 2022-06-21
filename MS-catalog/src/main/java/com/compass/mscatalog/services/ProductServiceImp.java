@@ -29,6 +29,7 @@ public class ProductServiceImp implements ProductService {
 	
 	@Override
 	public ProductDTO insert(ProductFormDTO productObj) {
+		
 		productObj.setId(sequenceService.getSequenceNumber(Product.SEQUENCE_NAME));
 		Product product = productRepository.save(mapper.map(productObj, Product.class));
 		return mapper.map(product, ProductDTO.class);

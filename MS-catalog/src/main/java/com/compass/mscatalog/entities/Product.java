@@ -18,7 +18,7 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Transient
-	public static final String SEQUENCE_NAME="user_sequence";
+	public static final String SEQUENCE_NAME="product_sequence";
 	
 	@Id
 	@EqualsAndHashCode.Include
