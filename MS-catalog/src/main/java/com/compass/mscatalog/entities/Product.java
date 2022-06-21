@@ -6,12 +6,14 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Document
 public class Product implements Serializable {
@@ -26,14 +28,4 @@ public class Product implements Serializable {
 	private String name;
 	private String description;
 	private Boolean active;
-	
-	public Product(Long  id, String name, String description, Boolean active) {
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.active = active;
-	}
-	
-	
-
 }

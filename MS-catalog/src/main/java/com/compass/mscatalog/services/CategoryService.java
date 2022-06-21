@@ -10,4 +10,8 @@ public interface CategoryService {
 	CategoryDTO insert(CategoryFormDTO categoryBody);
 	
 	List<CategoryDTO> findAll();
+	
+	void delete(Long id);
+	
+	CategoryDTO update (Long id, CategoryFormDTO categoryBody);
 }
