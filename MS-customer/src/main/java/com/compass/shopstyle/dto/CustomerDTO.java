@@ -2,10 +2,12 @@ package com.compass.shopstyle.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import com.compass.shopstyle.entities.Address;
 import com.compass.shopstyle.entities.Customer;
 import com.compass.shopstyle.entities.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -28,6 +30,7 @@ public class CustomerDTO implements Serializable{
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date birthDate;
 	private String email;
+	private List<Address> adresses;
 	
 	public CustomerDTO (Customer customer) {
 		this.setId(null);
@@ -36,6 +39,7 @@ public class CustomerDTO implements Serializable{
 		this.sex = customer.getSex();
 		this.birthDate = customer.getBirthDate();
 		this.email = customer.getEmail();
+		this.adresses = customer.getAdresses();
 	}
 
 }

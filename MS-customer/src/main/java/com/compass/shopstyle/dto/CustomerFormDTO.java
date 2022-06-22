@@ -30,10 +30,10 @@ public class CustomerFormDTO implements Serializable{
 	private Long id;
 	
 	@NotBlank(message = "obligatory field")
-	@Length(min = 3, message = "the size have to be between 5 and 20 characters")
+	@Length(min = 3, message = "the minimum number of characters is 3")
 	private String firstName;
 	@NotBlank(message = "obligatory field")
-	@Length(min = 3, message = "the size have to be between 5 and 20 characters")
+	@Length(min = 3, message = "the minimum number of characters is 3")
 	private String lastName;
 	@NotNull(message = "obligatory field")
 	@Enumerated(EnumType.STRING)
@@ -47,6 +47,7 @@ public class CustomerFormDTO implements Serializable{
 	@javax.validation.constraints.Email(message = "Email invalid")
 	private String email;
 	@NotBlank(message = "obligatory field")
+	@Length(min = 6, message = "the minimum number of characters is 6")
 	private String password;
 	@NotNull(message = "obligatory field")
 	private Boolean active;

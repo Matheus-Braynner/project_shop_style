@@ -26,5 +26,6 @@ public class VariationServiceImp implements VariationService {
 	public VariationDTO insert(VariationFormDTO variationObj) {
 		variationObj.setId(sequenceService.getSequenceNumber(Product.SEQUENCE_NAME));
 		Variation variation = variationRepository.insert(mapper.map(variationObj, Variation.class));
+		return mapper.map(variation, VariationDTO.class);
 	}
 }

@@ -1,15 +1,20 @@
 package com.compass.shopstyle.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.compass.shopstyle.entities.enums.Gender;
@@ -28,7 +33,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "customers")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -49,5 +54,8 @@ public class Customer implements Serializable {
 	@JsonIgnore
 	private String password;
 	private Boolean active;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId",fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Address> adresses = new ArrayList<>();
 
 }

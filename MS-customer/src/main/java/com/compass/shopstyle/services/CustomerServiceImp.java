@@ -14,7 +14,7 @@ import com.compass.shopstyle.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class CustomerServiceImp implements CustomerService {
-
+	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
@@ -41,16 +41,16 @@ public class CustomerServiceImp implements CustomerService {
 
 	@Override
 	public CustomerDTO update(Long id, CustomerNewFormDTO customerObj) {
-		Customer user = customerRepository.findById(id)
+		Customer custom = customerRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException(id));
-			user.setFirstName(customerObj.getFirstName());
-			user.setLastName(customerObj.getLastName());
-			user.setSex(customerObj.getSex());
-			user.setCpf(customerObj.getCpf());
-			user.setBirthDate(customerObj.getBirthDate());
-			user.setEmail(customerObj.getEmail());
-			user.setPassword(passwordEncoder.encode(customerObj.getPassword()));
-			Customer userUpdated = customerRepository.save(user);
+			custom.setFirstName(customerObj.getFirstName());
+			custom.setLastName(customerObj.getLastName());
+			custom.setSex(customerObj.getSex());
+			custom.setCpf(customerObj.getCpf());
+			custom.setBirthDate(customerObj.getBirthDate());
+			custom.setEmail(customerObj.getEmail());
+			custom.setPassword(passwordEncoder.encode(customerObj.getPassword()));
+			Customer userUpdated = customerRepository.save(custom);
 			return mapper.map(userUpdated, CustomerDTO.class);
 			
 	}

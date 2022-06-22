@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.compass.shopstyle.dto.CustomerDTO;
 import com.compass.shopstyle.dto.CustomerFormDTO;
 import com.compass.shopstyle.dto.CustomerNewFormDTO;
-import com.compass.shopstyle.services.CustomerServiceImp;
+import com.compass.shopstyle.services.CustomerService;
 
 @RestController
 @RequestMapping(value = "/v1")
 public class CustomerController {
 	
 	@Autowired
-	private CustomerServiceImp customerService;
+	private CustomerService customerService;
 
 	
 	@PostMapping(value = "/customers")
