@@ -21,8 +21,6 @@ public class CategoryServiceImp implements CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	@Autowired
-	private SequenceGeneratorService sequenceService;
 	
 	@Autowired
 	private ModelMapper mapper;

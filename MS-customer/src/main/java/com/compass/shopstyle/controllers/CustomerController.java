@@ -3,8 +3,6 @@ package com.compass.shopstyle.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.compass.shopstyle.dto.ChangePasswordDTO;
 import com.compass.shopstyle.dto.CustomerDTO;
 import com.compass.shopstyle.dto.CustomerFormDTO;
+import com.compass.shopstyle.dto.CustomerLoginFormDTO;
 import com.compass.shopstyle.dto.CustomerNewFormDTO;
 import com.compass.shopstyle.services.CustomerService;
 
@@ -31,25 +31,37 @@ public class CustomerController {
 	
 	@PostMapping(value = "/customers")
 	@Transactional
-	@CacheEvict(value = "getCusomers", allEntries = true)
 	public ResponseEntity<CustomerDTO> insert(@Valid @RequestBody CustomerFormDTO customerBody) {
-		CustomerDTO user = customerService.insert(customerBody);
-		return ResponseEntity.status(HttpStatus.CREATED).body(user);
+		CustomerDTO customer = customerService.insert(customerBody);
+		return ResponseEntity.status(HttpStatus.CREATED).body(customer);
+	}
+	
+	@PostMapping(value = "/login")
+	@Transactional
+	public ResponseEntity<CustomerDTO> login(@Valid @RequestBody CustomerLoginFormDTO customerLoginBody) {
+		CustomerDTO customer = customerService.login(customerLoginBody);
+		return ResponseEntity.ok().body(customer);
 	}
 	
 	@GetMapping(value = "/customers/{id}")
-	@Cacheable(value = "getCustomers")
 	public ResponseEntity<CustomerDTO> findById(@PathVariable Long id) {
-		CustomerDTO user = customerService.findById(id);
-		return ResponseEntity.ok(user);
+		CustomerDTO customer = customerService.findById(id);
+		return ResponseEntity.ok(customer);
 	}
 	
 	@PutMapping(value = "/customers/{id}")
 	@Transactional
-	@CacheEvict(value = "getCustomers", allEntries = true)
 	public ResponseEntity<CustomerDTO> update(@PathVariable Long id, @Valid @RequestBody CustomerNewFormDTO customerBody) {
-		CustomerDTO user = customerService.update(id, customerBody);
-		return ResponseEntity.ok(user);
+		CustomerDTO customer = customerService.update(id, customerBody);
+		return ResponseEntity.ok(customer);
 	}
+	
+	@PutMapping(value = "/login/{id}")
+	@Transactional
+	public ResponseEntity<CustomerDTO> changePassword(@PathVariable Long id, @Valid @RequestBody ChangePasswordDTO changePasswordBody) {
+		CustomerDTO customer = customerService.changePassword(id, changePasswordBody);
+		return ResponseEntity.ok(customer);
+	}
+	
 	
 }

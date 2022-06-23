@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.compass.shopstyle.services.exceptions.DatabaseException;
+import com.compass.shopstyle.services.exceptions.EmailNotFoundException;
+import com.compass.shopstyle.services.exceptions.EmailOrPasswordException;
 import com.compass.shopstyle.services.exceptions.ResourceNotFoundException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
@@ -60,5 +62,20 @@ public class ControllerExceptionHandler {
 		return ResponseEntity.status(status).body(err);
 	}
 	
+	@ExceptionHandler(EmailNotFoundException.class)
+	public ResponseEntity<StandardError> resourceNotFound(EmailNotFoundException e, HttpServletRequest request) {
+			String error = "Email not found";
+			HttpStatus status = HttpStatus.NOT_FOUND;
+			StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+			return ResponseEntity.status(status).body(err);
+	}
+	
+	@ExceptionHandler(EmailOrPasswordException.class)
+	public ResponseEntity<StandardError> resourceNotFound(EmailOrPasswordException e, HttpServletRequest request) {
+			String error = "Wrong email or password";
+			HttpStatus status = HttpStatus.BAD_REQUEST;
+			StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+			return ResponseEntity.status(status).body(err);
+	}
 	
 }
