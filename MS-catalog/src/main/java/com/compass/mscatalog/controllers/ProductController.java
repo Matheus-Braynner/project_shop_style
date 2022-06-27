@@ -20,40 +20,40 @@ import com.compass.mscatalog.dto.ProductFormDTO;
 import com.compass.mscatalog.services.ProductService;
 
 @RestController
-@RequestMapping(value = "/v1")
+@RequestMapping(value = "/v1/products")
 public class ProductController {
 	
 	
 	@Autowired
 	private ProductService productService;
 
-	@PostMapping(value = "/products")
+	@PostMapping()
 	@Transactional
 	public ResponseEntity<ProductDTO> insert (@RequestBody ProductFormDTO productObj) {
 		ProductDTO product = productService.insert(productObj);
 		return ResponseEntity.status(HttpStatus.CREATED).body(product);
 	}
 	
-	@GetMapping(value = "/products")
+	@GetMapping()
 	public ResponseEntity<List<ProductDTO>> findAll() {
 		List<ProductDTO> list = productService.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@GetMapping(value = "/products/{id}")
+	@GetMapping(value = "/{id}")
 	public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
 		ProductDTO product = productService.findById(id);
 		return ResponseEntity.ok().body(product);
 	}
 	
-	@DeleteMapping(value = "/products/{id}")
+	@DeleteMapping(value = "/{id}")
 	@Transactional
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		productService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@PutMapping(value = "/products/{id}")
+	@PutMapping(value = "/{id}")
 	@Transactional
 	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody ProductFormDTO productObj) {
 		ProductDTO product = productService.update(id, productObj);

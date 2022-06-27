@@ -15,14 +15,14 @@ import lombok.NoArgsConstructor;
 public class CategoryFormDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
+	private Long parentId;
 	@NotBlank(message = "obligatory field")
 	private String name;
 	@NotNull(message = "obligatory field")
 	private Boolean active;
 	
 	public CategoryFormDTO(Category category) {
-		this.id = category.getId();
+		this.parentId = category.getParents().getId();
 		this.name = category.getName();
 		this.active = category.getActive();
 	}

@@ -20,33 +20,39 @@ import com.compass.mscatalog.dto.CategoryFormDTO;
 import com.compass.mscatalog.services.CategoryServiceImp;
 
 @RestController
-@RequestMapping(value = "/v1")
+@RequestMapping(value = "/v1/categories")
 public class CategoryController {
 	
 	@Autowired
 	private CategoryServiceImp categoryService;
 	
-	@PostMapping(value = "/categories")
+	@PostMapping()
 	@Transactional
 	public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryFormDTO categoryBody) {
 		CategoryDTO category = categoryService.insert(categoryBody);
 		return ResponseEntity.status(HttpStatus.CREATED).body(category);
 	}
 	
-	@GetMapping(value = "/categories")
+	@GetMapping()
 	public ResponseEntity<List<CategoryDTO>> findAll() {
 		List<CategoryDTO> list = categoryService.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@DeleteMapping(value = "/categories/{id}")
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<CategoryDTO> findById(@PathVariable Long id) {
+		CategoryDTO category = categoryService.findById(id);
+		return ResponseEntity.ok(category);
+	}
+	
+	@DeleteMapping(value = "/{id}")
 	@Transactional
 	public ResponseEntity<Void> delete (@PathVariable Long id) {
 		categoryService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@PutMapping(value = "/categories/{id}")
+	@PutMapping(value = "/{id}")
 	@Transactional
 	public ResponseEntity<CategoryDTO> update (@PathVariable Long id, @RequestBody CategoryFormDTO categoryBody) {
 		CategoryDTO category = categoryService.update(id, categoryBody);

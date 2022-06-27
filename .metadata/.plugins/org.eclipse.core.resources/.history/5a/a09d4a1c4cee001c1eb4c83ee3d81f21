@@ -1,9 +1,0 @@
-package com.compass.shopstyle.config.security;
-
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.stereotype.Service;
-
-@Service
-public class AuthenticationService  implements UserDetailsService {
-
-}

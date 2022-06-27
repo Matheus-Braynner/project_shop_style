@@ -7,8 +7,6 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.compass.shopstyle.services.validation.CustomerUpdate;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

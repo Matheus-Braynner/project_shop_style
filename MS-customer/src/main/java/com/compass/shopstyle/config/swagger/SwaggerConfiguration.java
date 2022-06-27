@@ -1,4 +1,4 @@
-package com.compass.shopstyle.config.swagger;
+/*package com.compass.shopstyle.config.swagger;
 
 import java.util.Arrays;
 
@@ -48,3 +48,4 @@ public class SwaggerConfiguration {
 				.build();
 	}
 }
+*/

@@ -1,5 +1,0 @@
-package com.compass.shopstyle.config.security;
-
-public class AuthenticationService {
-
-}

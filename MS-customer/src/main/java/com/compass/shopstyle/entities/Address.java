@@ -2,6 +2,7 @@ package com.compass.shopstyle.entities;
 
 import java.io.Serializable;
 
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;

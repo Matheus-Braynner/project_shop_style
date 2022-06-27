@@ -13,7 +13,7 @@ import com.compass.mscatalog.dto.ProductFormDTO;
 import com.compass.mscatalog.entities.Product;
 import com.compass.mscatalog.repositories.ProductRepository;
 import com.compass.mscatalog.services.exception.DatabaseException;
-import com.compass.mscatalog.services.exception.ObjectNotFoundException;
+import com.compass.mscatalog.services.exception.ResourceNotFoundException;
 
 @Service
 public class ProductServiceImp implements ProductService {
@@ -24,13 +24,8 @@ public class ProductServiceImp implements ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	
-	@Autowired
-	private SequenceGeneratorService sequenceService;
-	
 	@Override
 	public ProductDTO insert(ProductFormDTO productObj) {
-		
-		productObj.setId(sequenceService.getSequenceNumber(Product.SEQUENCE_NAME));
 		Product product = productRepository.save(mapper.map(productObj, Product.class));
 		return mapper.map(product, ProductDTO.class);
 	}
@@ -45,7 +40,7 @@ public class ProductServiceImp implements ProductService {
 	@Override
 	public ProductDTO findById(Long id) {
 		Product product = productRepository.findById(id)
-				.orElseThrow(() -> new ObjectNotFoundException("Object not found " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Object not found " + id));
 		return mapper.map(product, ProductDTO.class);
 	}
 
@@ -53,10 +48,10 @@ public class ProductServiceImp implements ProductService {
 	public void delete(Long  id) {
 		try {
 			Product product = productRepository.findById(id)
-				.orElseThrow(() -> new ObjectNotFoundException("Object not found " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Object not found " + id));
 			productRepository.delete(product);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ObjectNotFoundException("Object not found " + id);
+			throw new ResourceNotFoundException("Object not found " + id);
 		} catch (DatabaseException e) {
 			throw new DatabaseException(e.getMessage());
 		}
@@ -66,7 +61,7 @@ public class ProductServiceImp implements ProductService {
 	@Override
 	public ProductDTO update(Long id, ProductFormDTO productObj) {
 		Product product = productRepository.findById(id)
-				.orElseThrow(() -> new ObjectNotFoundException("Object not found " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Object not found " + id));
 			product.setName(productObj.getName());
 			product.setDescription(productObj.getDescription());
 			product.setActive(productObj.getActive());

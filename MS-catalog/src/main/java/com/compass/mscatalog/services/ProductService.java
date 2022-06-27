@@ -7,11 +7,11 @@ import com.compass.mscatalog.dto.ProductFormDTO;
 
 public interface ProductService {
 	
+	ProductDTO insert (ProductFormDTO productObj);
+	
 	List<ProductDTO> findAll();
 	
 	ProductDTO findById(Long id);
-	
-	ProductDTO insert (ProductFormDTO productObj);
 	
 	void delete(Long id);
 	

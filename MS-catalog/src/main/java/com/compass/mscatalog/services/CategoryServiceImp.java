@@ -13,7 +13,7 @@ import com.compass.mscatalog.dto.CategoryFormDTO;
 import com.compass.mscatalog.entities.Category;
 import com.compass.mscatalog.repositories.CategoryRepository;
 import com.compass.mscatalog.services.exception.DatabaseException;
-import com.compass.mscatalog.services.exception.ObjectNotFoundException;
+import com.compass.mscatalog.services.exception.ResourceNotFoundException;
 
 @Service
 public class CategoryServiceImp implements CategoryService {
@@ -28,9 +28,22 @@ public class CategoryServiceImp implements CategoryService {
 	
 	@Override
 	public CategoryDTO insert(CategoryFormDTO categoryBody) {
-		categoryBody.setId(sequenceService.getSequenceNumber(Category.SEQUENCE_NAME));
-		Category category = categoryRepository.save(mapper.map(categoryBody, Category.class));
-		return mapper.map(category, CategoryDTO.class);
+		
+		if(categoryBody.getParentId() == null) {
+			Category category = categoryRepository.save(mapper.map(categoryBody, Category.class));
+			return mapper.map(category, CategoryDTO.class);
+		}
+		Category categoryIdParent = categoryRepository.findById(categoryBody.getParentId())
+				.orElseThrow(() -> new ResourceNotFoundException("Object not found, id : " + categoryBody.getParentId()));
+		Category category = new Category();
+		if(categoryIdParent != null) {
+			category.setName(categoryBody.getName());
+			category.setActive(categoryBody.getActive());
+			category.setParents(categoryIdParent);
+			categoryIdParent.getChildren().add(category);
+		}
+		Category categorySave = categoryRepository.save(mapper.map(category, Category.class));
+		return mapper.map(categorySave, CategoryDTO.class);
 	}
 
 	@Override
@@ -39,15 +52,22 @@ public class CategoryServiceImp implements CategoryService {
 		List<CategoryDTO> listDTO = list.stream().map(x -> new CategoryDTO(x)).collect(Collectors.toList());
 		return listDTO;
 	}
+	
+	@Override
+	public CategoryDTO findById(Long id) {
+		Category category = categoryRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Object not found, id : " + id));
+		return mapper.map(category, CategoryDTO.class);
+	}
 
 	@Override
 	public void delete(Long id) {
 		try {
 			Category category = categoryRepository.findById(id)
-					.orElseThrow(() -> new ObjectNotFoundException("Object not found, id : " + id));
+					.orElseThrow(() -> new ResourceNotFoundException("Object not found, id : " + id));
 			categoryRepository.delete(category);
 			} catch (EmptyResultDataAccessException e) {
-				throw new ObjectNotFoundException("Object not found " + id);
+				throw new ResourceNotFoundException("Object not found " + id);
 			} catch (DatabaseException e) {
 				throw new DatabaseException(e.getMessage());
 			}
@@ -56,12 +76,14 @@ public class CategoryServiceImp implements CategoryService {
 	@Override
 	public CategoryDTO update(Long id, CategoryFormDTO categoryBody) {
 		Category category = categoryRepository.findById(id)
-				.orElseThrow(() -> new ObjectNotFoundException("Object not found, id : " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Object not found, id : " + id));
 		category.setName(categoryBody.getName());
 		category.setActive(categoryBody.getActive());
 		Category categoryUpdated = categoryRepository.save(category);
 		return mapper.map(categoryUpdated, CategoryDTO.class);
 	}
+
+
 
 
 }

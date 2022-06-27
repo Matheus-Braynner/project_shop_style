@@ -20,14 +20,24 @@ public class ProductFormDTO implements Serializable {
 	private String name;
 	@NotBlank(message = "obligatory field")
 	private String description;
+	@NotBlank(message = "obligatory field")
+	private String brand;
+	@NotBlank(message = "obligatory field")
+	private String material;
 	@NotNull(message = "obligatory field")
 	private Boolean active;
+	@NotBlank(message = "Category id is an obligatory field")
+	private Long categoryId;
+	
 	
 	public ProductFormDTO(Product product) {
 		this.id = product.getId();
 		this.name = product.getName();
 		this.description = product.getDescription();
+		this.brand = product.getBrand();
+		this.material = product.getMaterial();
 		this.active = product.getActive();
+		this.categoryId = product.getCategoryId().getId();
 	}
 	
 }

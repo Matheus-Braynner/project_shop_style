@@ -24,13 +24,13 @@ import com.compass.shopstyle.dto.AddressFormDTO;
 import com.compass.shopstyle.services.AddressService;
 
 @RestController
-@RequestMapping(value = "v1")
+@RequestMapping(value = "/v1/address")
 public class AddressController {
 	
 	@Autowired
 	private AddressService addressService;
 	
-	@PostMapping(value = "/address")
+	@PostMapping()
 	@Transactional
 	@CacheEvict(value = "getAdresses", allEntries = true)
 	public ResponseEntity<AddressDTO> insert(@Valid @RequestBody AddressFormDTO addressBody) {
@@ -38,14 +38,14 @@ public class AddressController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(address);
 	}
 	
-	@GetMapping(value = "/address")
+	@GetMapping()
 	@Cacheable(value = "getAdresses")
 	public ResponseEntity<List<AddressDTO>> findAll() {
 		List<AddressDTO> list = addressService.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@PutMapping(value = "/address/{id}")
+	@PutMapping(value = "/{id}")
 	@Transactional
 	@CacheEvict(value = "getAdresses", allEntries = true)
 	public ResponseEntity<AddressDTO> update(@PathVariable Long id, @Valid @RequestBody AddressFormDTO addressBody) {
@@ -53,7 +53,7 @@ public class AddressController {
 		return ResponseEntity.ok(address);
 	}
 	
-	@DeleteMapping(value = "/address/{id}")
+	@DeleteMapping(value = "/{id}")
 	@Transactional
 	@CacheEvict(value = "getAdresses", allEntries = true)
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
