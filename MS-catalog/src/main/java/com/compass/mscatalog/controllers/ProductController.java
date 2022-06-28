@@ -2,6 +2,8 @@ package com.compass.mscatalog.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +31,7 @@ public class ProductController {
 
 	@PostMapping()
 	@Transactional
-	public ResponseEntity<ProductDTO> insert (@RequestBody ProductFormDTO productObj) {
+	public ResponseEntity<ProductDTO> insert (@RequestBody @Valid ProductFormDTO productObj) {
 		ProductDTO product = productService.insert(productObj);
 		return ResponseEntity.status(HttpStatus.CREATED).body(product);
 	}
@@ -55,7 +57,7 @@ public class ProductController {
 	
 	@PutMapping(value = "/{id}")
 	@Transactional
-	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody ProductFormDTO productObj) {
+	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody @Valid ProductFormDTO productObj) {
 		ProductDTO product = productService.update(id, productObj);
 		return ResponseEntity.ok(product);
 	}

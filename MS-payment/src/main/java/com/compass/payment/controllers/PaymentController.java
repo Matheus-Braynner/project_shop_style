@@ -2,6 +2,8 @@ package com.compass.payment.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +29,7 @@ public class PaymentController {
 	
 	@PostMapping
 	@Transactional
-	public ResponseEntity<PaymentDTO> insert(@RequestBody PaymentFormDTO paymentBody) {
+	public ResponseEntity<PaymentDTO> insert(@RequestBody @Valid PaymentFormDTO paymentBody) {
 		PaymentDTO payment = paymentService.insert(paymentBody);
 		return ResponseEntity.status(HttpStatus.CREATED).body(payment);
 	}

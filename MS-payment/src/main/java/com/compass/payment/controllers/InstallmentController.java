@@ -1,5 +1,7 @@
 package com.compass.payment.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +27,14 @@ public class InstallmentController {
 	
 	@PostMapping
 	@Transactional
-	public ResponseEntity<InstallmentDTO> insert(@RequestBody InstallmentFormDTO installmentBody) {
+	public ResponseEntity<InstallmentDTO> insert(@RequestBody @Valid InstallmentFormDTO installmentBody) {
 		InstallmentDTO installment = installmentService.insert(installmentBody);
 		return ResponseEntity.status(HttpStatus.CREATED).body(installment);
 	}
 	
 	@PutMapping(value = "/{id}")
 	@Transactional
-	public ResponseEntity<InstallmentDTO> update(@PathVariable Long id, @RequestBody InstallmentFormDTO installmentBody) {
+	public ResponseEntity<InstallmentDTO> update(@PathVariable Long id, @RequestBody @Valid InstallmentFormDTO installmentBody) {
 		InstallmentDTO installment = installmentService.update(id, installmentBody);
 		return ResponseEntity.ok(installment);
 	}

@@ -1,5 +1,7 @@
 package com.compass.mscatalog.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +27,14 @@ public class SkuController {
 
 	@PostMapping()
 	@Transactional
-	public ResponseEntity<SkuDTO> insert(@RequestBody SkuFormDTO skuBody) {
+	public ResponseEntity<SkuDTO> insert(@RequestBody @Valid SkuFormDTO skuBody) {
 		SkuDTO sku = skuService.insert(skuBody);
 		return ResponseEntity.status(HttpStatus.CREATED).body(sku);
 	}
 	
 	@PutMapping(value = "/{id}")
 	@Transactional
-	public ResponseEntity<SkuDTO> update(@PathVariable Long id, @RequestBody SkuFormDTO skuBody) {
+	public ResponseEntity<SkuDTO> update(@PathVariable Long id, @RequestBody @Valid SkuFormDTO skuBody) {
 		SkuDTO sku = skuService.update(id, skuBody);
 		return ResponseEntity.ok(sku);
 	}
