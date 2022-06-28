@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.compass.payment.services.exceptions.DatabaseException;
+import com.compass.payment.services.exceptions.NotValidPaymentException;
 import com.compass.payment.services.exceptions.ResourceNotFoundException;
 
 @RestControllerAdvice
@@ -30,4 +31,14 @@ public class ControllerExceptionHandler {
 			StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
 			return ResponseEntity.status(status).body(err);
 	}
+	
+	@ExceptionHandler(NotValidPaymentException.class)
+	public ResponseEntity<StandardError> resourceNotFound(NotValidPaymentException e, HttpServletRequest request) {
+			String error = "Database exception";
+			HttpStatus status = HttpStatus.NOT_FOUND;
+			StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+			return ResponseEntity.status(status).body(err);
+	}
 }
+
+

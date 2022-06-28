@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.compass.payment.dto.InstallmentFormDTO;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -27,4 +29,10 @@ public class Installment {
 	@OneToOne
 	@JoinColumn(name = "payment_id")
 	private Payment payment;
+	
+	public Installment(InstallmentFormDTO installmentFormDto, Payment payment) {
+		this.amount = installmentFormDto.getAmount();
+		this.brand = installmentFormDto.getBrand();
+		this.payment = payment;
+	}
 }
