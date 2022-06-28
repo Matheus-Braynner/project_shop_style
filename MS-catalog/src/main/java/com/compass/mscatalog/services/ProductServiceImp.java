@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 
 import com.compass.mscatalog.dto.ProductDTO;
 import com.compass.mscatalog.dto.ProductFormDTO;
+import com.compass.mscatalog.entities.Category;
 import com.compass.mscatalog.entities.Product;
+import com.compass.mscatalog.repositories.CategoryRepository;
 import com.compass.mscatalog.repositories.ProductRepository;
+import com.compass.mscatalog.services.exception.CategoryInvalidException;
 import com.compass.mscatalog.services.exception.DatabaseException;
 import com.compass.mscatalog.services.exception.ResourceNotFoundException;
 
@@ -20,16 +23,27 @@ public class ProductServiceImp implements ProductService {
 
 	@Autowired
 	private ModelMapper mapper;
-	
+
+	@Autowired
+	private CategoryRepository categoryRepository;
+
 	@Autowired
 	private ProductRepository productRepository;
-	
+
 	@Override
 	public ProductDTO insert(ProductFormDTO productObj) {
-		Product product = productRepository.save(mapper.map(productObj, Product.class));
-		return mapper.map(product, ProductDTO.class);
+		Category category = categoryRepository.findById(productObj.getCategoryId()).orElseThrow(
+				() -> new ResourceNotFoundException("Resource not found, CategoryId = " + productObj.getCategoryId()));
+		if (category.getActive() && category.getChildren().isEmpty()) {
+			productObj.setCategoryId(category.getId());
+			Product product = productRepository.save(mapper.map(productObj, Product.class));
+			return mapper.map(product, ProductDTO.class);
+		} else {
+			throw new CategoryInvalidException("It is not possible to add a product to this category.");
+		}
+
 	}
-	
+
 	@Override
 	public List<ProductDTO> findAll() {
 		List<Product> listAll = productRepository.findAll();
@@ -45,10 +59,10 @@ public class ProductServiceImp implements ProductService {
 	}
 
 	@Override
-	public void delete(Long  id) {
+	public void delete(Long id) {
 		try {
 			Product product = productRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Object not found " + id));
+					.orElseThrow(() -> new ResourceNotFoundException("Object not found " + id));
 			productRepository.delete(product);
 		} catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException("Object not found " + id);
@@ -56,18 +70,26 @@ public class ProductServiceImp implements ProductService {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
-	
-	
+
 	@Override
 	public ProductDTO update(Long id, ProductFormDTO productObj) {
+		Category category = categoryRepository.findById(productObj.getCategoryId()).orElseThrow(
+				() -> new ResourceNotFoundException("Resource not found, CategoryId = " + productObj.getCategoryId()));
 		Product product = productRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Object not found " + id));
-			product.setName(productObj.getName());
-			product.setDescription(productObj.getDescription());
-			product.setActive(productObj.getActive());
+		product.setName(productObj.getName());
+		product.setDescription(productObj.getDescription());
+		product.setActive(productObj.getActive());
+
+		if (category.getActive() && category.getChildren().isEmpty()) {
+			productObj.setCategoryId(category.getId());
 			Product productUpdated = productRepository.save(product);
 			return mapper.map(productUpdated, ProductDTO.class);
-			
+
+		} else {
+			throw new CategoryInvalidException("It is not possible to add a product to this category.");
+		}
+
 	}
 
 }

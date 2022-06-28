@@ -20,7 +20,7 @@ public class ProductDTO implements Serializable{
 	private String brand;
 	private String material;
 	private Boolean active;
-	private List<Sku> skus;
+	private List<Sku> images;
 	
 	public ProductDTO(Product product) {
 		this.id = product.getId();
@@ -29,7 +29,7 @@ public class ProductDTO implements Serializable{
 		this.brand = product.getBrand();
 		this.material = product.getMaterial();
 		this.active = product.getActive();
-		this.skus = product.getSkus();
+		this.images = product.getSkus();
 	}
 }
 

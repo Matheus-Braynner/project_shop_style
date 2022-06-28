@@ -1,7 +1,6 @@
 package com.compass.mscatalog.entities;
 
 import java.io.Serializable;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 import com.compass.mscatalog.entities.enums.Size;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,9 +43,14 @@ public class Sku implements Serializable {
 	private Integer height;
 	private Integer width;
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "product_id")
 	private Product productId;
-	@OneToMany(mappedBy = "sku", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "sku", fetch = FetchType.LAZY)
 	private List<Media> images = new ArrayList<>();
+	
+	public void addImages(Media media) {
+		this.images.add(media);
+	}
 
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.compass.mscatalog.dto.SkuDTO;
 import com.compass.mscatalog.dto.SkuFormDTO;
-import com.compass.mscatalog.dto.SkuFormUpdateDTO;
 import com.compass.mscatalog.services.SkuService;
 
 @RestController
@@ -33,7 +32,7 @@ public class SkuController {
 	
 	@PutMapping(value = "/{id}")
 	@Transactional
-	public ResponseEntity<SkuDTO> update(@PathVariable Long id, @RequestBody SkuFormUpdateDTO skuBody) {
+	public ResponseEntity<SkuDTO> update(@PathVariable Long id, @RequestBody SkuFormDTO skuBody) {
 		SkuDTO sku = skuService.update(id, skuBody);
 		return ResponseEntity.ok(sku);
 	}

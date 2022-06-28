@@ -33,5 +33,10 @@ public class Media implements Serializable {
 	@JsonIgnore
 	@JoinColumn(name = "sku_id")
 	private Sku sku;
+	
+	public Media(String imgUrl, Sku sku) {
+		this.imageUrl = imgUrl;
+		this.sku = sku;
+	}
 
 }
