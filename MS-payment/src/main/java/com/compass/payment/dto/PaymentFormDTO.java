@@ -1,5 +1,7 @@
 package com.compass.payment.dto;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -8,7 +10,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class PaymentFormDTO  {
+public class PaymentFormDTO  implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@NotBlank(message = "obligatory field")
 	private String type;

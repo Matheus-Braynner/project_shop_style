@@ -1,5 +1,7 @@
 package com.compass.payment.dto;
 
+import java.io.Serializable;
+
 import com.compass.payment.entities.Installment;
 import com.compass.payment.entities.Payment;
 
@@ -8,8 +10,9 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class InstallmentDTO {
-
+public class InstallmentDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
 	private Double amount;
 	private String brand;
