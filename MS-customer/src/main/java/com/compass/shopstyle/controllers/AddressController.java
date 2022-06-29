@@ -24,7 +24,7 @@ import com.compass.shopstyle.dto.AddressFormDTO;
 import com.compass.shopstyle.services.AddressService;
 
 @RestController
-@RequestMapping(value = "/v1/address")
+@RequestMapping(value = "/v1/addresses")
 public class AddressController {
 	
 	@Autowired
@@ -32,22 +32,25 @@ public class AddressController {
 	
 	@PostMapping()
 	@Transactional
-	@CacheEvict(value = "getAdresses", allEntries = true)
 	public ResponseEntity<AddressDTO> insert(@Valid @RequestBody AddressFormDTO addressBody) {
 		AddressDTO address = addressService.insert(addressBody);
 		return ResponseEntity.status(HttpStatus.CREATED).body(address);
 	}
 	
 	@GetMapping()
-	@Cacheable(value = "getAdresses")
 	public ResponseEntity<List<AddressDTO>> findAll() {
 		List<AddressDTO> list = addressService.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<AddressDTO> findById(@PathVariable Long id) {
+		AddressDTO address = addressService.findById(id);
+		return ResponseEntity.ok().body(address);
+	}
+	
 	@PutMapping(value = "/{id}")
 	@Transactional
-	@CacheEvict(value = "getAdresses", allEntries = true)
 	public ResponseEntity<AddressDTO> update(@PathVariable Long id, @Valid @RequestBody AddressFormDTO addressBody) {
 		AddressDTO address = addressService.update(id, addressBody);
 		return ResponseEntity.ok(address);
@@ -55,7 +58,6 @@ public class AddressController {
 	
 	@DeleteMapping(value = "/{id}")
 	@Transactional
-	@CacheEvict(value = "getAdresses", allEntries = true)
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		addressService.delete(id);
 		return ResponseEntity.noContent().build();

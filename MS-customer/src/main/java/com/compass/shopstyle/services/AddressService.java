@@ -11,6 +11,8 @@ public interface AddressService {
 	
 	List<AddressDTO> findAll();
 	
+	AddressDTO findById(Long id);
+	
 	AddressDTO update(Long id, AddressFormDTO addressObj);
 	
 	void delete(Long id);

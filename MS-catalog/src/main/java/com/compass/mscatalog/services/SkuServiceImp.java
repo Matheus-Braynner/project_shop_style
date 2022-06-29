@@ -54,13 +54,20 @@ public class SkuServiceImp implements SkuService {
 
 		return mapper.map(skuSaved, SkuDTO.class);
 	}
+	
+	@Override
+	public SkuDTO findById(Long id) {
+		Sku sku = skuRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException(null));
+		return mapper.map(sku, SkuDTO.class);
+	}
 
 	@Override
 	public SkuDTO update(Long id, SkuFormDTO skuObj) {
 		Product product = productRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Resource not found, id = " + skuObj.getProductId()));
+				.orElseThrow(() -> new ResourceNotFoundException("Resource not found, Product id = " + skuObj.getProductId()));
 		Sku sku = skuRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Resource not found, id = " + skuObj.getId()));
+				.orElseThrow(() -> new ResourceNotFoundException("Resource not found, id = " + id));
 		sku.setProductId(product);
 		sku.setPrice(skuObj.getPrice());
 		sku.setQuantity(skuObj.getQuantity());
@@ -90,5 +97,7 @@ public class SkuServiceImp implements SkuService {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
+
+	
 
 }

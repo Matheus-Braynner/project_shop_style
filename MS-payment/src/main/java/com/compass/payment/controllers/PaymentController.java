@@ -40,7 +40,7 @@ public class PaymentController {
 		return ResponseEntity.ok().body(paymentList);
 	}
 	
-	@GetMapping(value = "/{}") 
+	@GetMapping(value = "/{id}") 
 	public ResponseEntity<PaymentDTO> findById(@PathVariable Long id) {
 		PaymentDTO payment = paymentService.findById(id);
 		return ResponseEntity.ok().body(payment);

@@ -9,5 +9,7 @@ public interface SkuService {
 	
 	SkuDTO update(Long id, SkuFormDTO skuObj);
 	
+	SkuDTO findById(Long id);
+	
 	void delete(Long id);
 }

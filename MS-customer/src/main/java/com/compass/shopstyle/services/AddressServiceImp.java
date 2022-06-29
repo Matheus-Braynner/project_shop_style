@@ -39,6 +39,12 @@ public class AddressServiceImp implements AddressService {
 		return listDTO;
 	}
 	
+	@Override
+	public AddressDTO findById(Long id) {
+		Address address = addressRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Resource not found, id = " + id));
+		return mapper.map(address, AddressDTO.class);
+	}
 
 	@Override
 	public AddressDTO update(Long id, AddressFormDTO addressObj) {
@@ -68,5 +74,7 @@ public class AddressServiceImp implements AddressService {
 			throw new DatabaseException(e.getMessage());
 		}
 	}
+
+	
 	
 }
