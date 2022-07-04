@@ -4,14 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.compass.order.enums.Status;
+import com.compass.order.feignclients.response.Address;
 import com.compass.order.feignclients.response.Customer;
 import com.compass.order.feignclients.response.Installment;
 import com.compass.order.feignclients.response.Payment;
@@ -26,21 +23,21 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Document
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include
+	@Id
 	private Long id;
+	private Address address;
 	private Customer customer;
 	private Payment payment;
-	private  List<Sku> cart;
+	private List<Sku> cart;
 	private Installment installment;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date date;
-	@Enumerated(EnumType.STRING)
 	private Status status;
 	private Double total;
 	
