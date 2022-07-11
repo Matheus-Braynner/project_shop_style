@@ -22,14 +22,14 @@ import com.compass.shopstyle.dto.CustomerNewFormDTO;
 import com.compass.shopstyle.services.CustomerService;
 
 @RestController
-@RequestMapping(value = "/v1")
+@RequestMapping(value = "/v1/customers")
 public class CustomerController {
 	
 	@Autowired
 	private CustomerService customerService;
 
 	
-	@PostMapping(value = "/customers")
+	@PostMapping()
 	@Transactional
 	public ResponseEntity<CustomerDTO> insert(@Valid @RequestBody CustomerFormDTO customerBody) {
 		CustomerDTO customer = customerService.insert(customerBody);
@@ -43,13 +43,13 @@ public class CustomerController {
 		return ResponseEntity.ok().body(customer);
 	}
 	
-	@GetMapping(value = "/customers/{id}")
+	@GetMapping(value = "/{id}")
 	public ResponseEntity<CustomerDTO> findById(@PathVariable Long id) {
 		CustomerDTO customer = customerService.findById(id);
 		return ResponseEntity.ok(customer);
 	}
 	
-	@PutMapping(value = "/customers/{id}")
+	@PutMapping(value = "/{id}")
 	@Transactional
 	public ResponseEntity<CustomerDTO> update(@PathVariable Long id, @Valid @RequestBody CustomerNewFormDTO customerBody) {
 		CustomerDTO customer = customerService.update(id, customerBody);

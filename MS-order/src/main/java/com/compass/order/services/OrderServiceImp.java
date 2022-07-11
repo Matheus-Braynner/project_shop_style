@@ -15,6 +15,7 @@ import com.compass.order.enums.Status;
 import com.compass.order.feignclients.CatalogClient;
 import com.compass.order.feignclients.CustomerClient;
 import com.compass.order.feignclients.PaymentClient;
+import com.compass.order.feignclients.request.SkuDTO;
 import com.compass.order.feignclients.response.Address;
 import com.compass.order.feignclients.response.Customer;
 import com.compass.order.feignclients.response.Installment;
@@ -43,19 +44,19 @@ public class OrderServiceImp implements OrderService {
 	@Override
 	public OrderDTO insert(OrderFormDTO orderObj) {
 		Order order = new Order();
-		Customer customer = customerClient.getCustomer(orderObj.getCustomer().getId());
-		Address address = customerClient.getAddress(orderObj.getCustomer().getAddressId());
+		Customer customer = customerClient.findByIdCustomer(orderObj.getCustomer().getId());
+		Address address = customerClient.findByIdAddress(orderObj.getCustomer().getAdressesId());
 		Payment payment = paymentClient.getPayment(orderObj.getPayment().getId());
 		Installment installment = new Installment();
-		installment.setAmount(null);
+		installment.setAmount(orderObj.getPayment().getInstallments());
 		installment.setPayment(payment);
 		Double total = 0.0;
 		List<Sku> cart = new ArrayList<>();
-		for(Sku sku : orderObj.getCart()) {
-			Sku skuImp = catalogClient.getSku(sku.getId());
-			skuImp.setQuantity(sku.getQuantity());
+		for(SkuDTO skuDTO : orderObj.getCart()) {
+			Sku skuImp = catalogClient.getSku(skuDTO.getSkuId());
+			skuImp.setQuantity(skuDTO.getQuantity());
 			cart.add(skuImp);
-			total += (skuImp.getPrice() * sku.getQuantity());
+			total += (skuImp.getPrice() * skuDTO.getQuantity());
 		}
 		
 		order.setCustomer(customer);

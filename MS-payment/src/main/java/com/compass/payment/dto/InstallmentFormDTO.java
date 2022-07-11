@@ -13,7 +13,7 @@ public class InstallmentFormDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@NotNull(message = "obligatory field")
-	private Double amount;
+	private Integer amount;
 	private String brand;
 	@NotNull(message = "obligatory field")
 	private Long paymentId;

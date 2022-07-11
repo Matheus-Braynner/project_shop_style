@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.compass.order.feignclients.response.Payment;
 
 @Component
-@FeignClient("payment")
+@FeignClient("MS-payment")
 public interface PaymentClient {
 	
 	@GetMapping(value = "v1/payments/{id}") 

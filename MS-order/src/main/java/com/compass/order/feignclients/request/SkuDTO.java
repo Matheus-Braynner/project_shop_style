@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class SkuDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
+	private Long skuId;
 	private Integer quantity;
 	
 	

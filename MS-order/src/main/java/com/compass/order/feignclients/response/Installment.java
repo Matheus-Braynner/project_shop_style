@@ -12,8 +12,7 @@ import lombok.NoArgsConstructor;
 public class Installment implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
-	private Double amount;
+	private Integer amount;
 	private String brand;
 	private Payment payment;
 	

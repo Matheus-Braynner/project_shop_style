@@ -27,7 +27,7 @@ public class Installment implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include
 	private Long id;
-	private Double amount;
+	private Integer amount;
 	private String brand;
 	@OneToOne
 	@JoinColumn(name = "payment_id")

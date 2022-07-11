@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import com.compass.shopstyle.dto.AddressDTO;
 import com.compass.shopstyle.dto.AddressFormDTO;
 import com.compass.shopstyle.entities.Address;
+import com.compass.shopstyle.entities.Customer;
 import com.compass.shopstyle.repositories.AddressRepository;
+import com.compass.shopstyle.repositories.CustomerRepository;
 import com.compass.shopstyle.services.exceptions.DatabaseException;
 import com.compass.shopstyle.services.exceptions.ResourceNotFoundException;
 
@@ -21,6 +23,9 @@ public class AddressServiceImp implements AddressService {
 
 	@Autowired
 	private AddressRepository addressRepository;
+	
+	@Autowired
+	private CustomerRepository customerRepository;
 
 	@Autowired
 	private ModelMapper mapper;
@@ -28,8 +33,12 @@ public class AddressServiceImp implements AddressService {
 	@Override
 	public AddressDTO insert(AddressFormDTO addressObj) {
 		addressObj.setId(null);
-		Address address = addressRepository.save(mapper.map(addressObj, Address.class));
-		return mapper.map(address, AddressDTO.class);
+		Customer customer = customerRepository.findById(addressObj.getCustomerId())
+				.orElseThrow(() -> new ResourceNotFoundException(addressObj.getCustomerId()));
+		Address address = mapper.map(addressObj, Address.class);
+		address.setCustomerId(customer);
+		Address addressSaved = addressRepository.save(mapper.map(address, Address.class));
+		return mapper.map(addressSaved, AddressDTO.class);
 	}
 	
 	@Override

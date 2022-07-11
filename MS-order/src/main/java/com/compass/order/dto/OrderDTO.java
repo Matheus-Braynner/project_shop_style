@@ -24,7 +24,7 @@ public class OrderDTO implements Serializable {
 	private Long id;
 	private Customer customer;
 	private Payment payment;
-	private  List<Sku> cart;
+	private List<Sku> cart;
 	private Installment installment;
 	private Date date;
 	private Status status;

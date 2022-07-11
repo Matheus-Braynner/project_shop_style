@@ -27,6 +27,4 @@ public class Address implements Serializable {
 	@Pattern(regexp="([0-9]{5}-[0-9]{3})")
 	private String cep;
 	private String complement;
-	private Customer customerId;
-
 }

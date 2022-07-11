@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.compass.order.feignclients.request.Gender;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class Customer implements Serializable {
 	private String lastName;
 	private Gender sex;
 	private String cpf;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date birthDate;
 	private String email;
 	private String password;

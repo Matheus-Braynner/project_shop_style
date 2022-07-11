@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.compass.order.feignclients.response.Sku;
 
 @Component
-@FeignClient("catalog")
+@FeignClient("MS-catalog")
 public interface CatalogClient {
 
 	@GetMapping(value = "/v1/skus/{id}")
