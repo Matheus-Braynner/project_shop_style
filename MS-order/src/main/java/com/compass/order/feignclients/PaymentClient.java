@@ -11,7 +11,7 @@ import com.compass.order.feignclients.response.Payment;
 @FeignClient("MS-payment")
 public interface PaymentClient {
 	
-	@GetMapping(value = "v1/payments/{id}") 
+	@GetMapping(value = "/v1/payments/{id}") 
 	Payment getPayment(@PathVariable Long id);
 
 }

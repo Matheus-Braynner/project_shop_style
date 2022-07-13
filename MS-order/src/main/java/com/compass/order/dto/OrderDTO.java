@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.compass.order.entities.Order;
 import com.compass.order.enums.Status;
+import com.compass.order.feignclients.response.Address;
 import com.compass.order.feignclients.response.Customer;
 import com.compass.order.feignclients.response.Installment;
 import com.compass.order.feignclients.response.Payment;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class OrderDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
+	private String id;
 	private Customer customer;
 	private Payment payment;
 	private List<Sku> cart;
@@ -29,6 +30,7 @@ public class OrderDTO implements Serializable {
 	private Date date;
 	private Status status;
 	private Double total;
+	private Address address;
 	
 	public OrderDTO(Order order) {
 		this.id = order.getId();
@@ -39,6 +41,7 @@ public class OrderDTO implements Serializable {
 		this.date = order.getDate();
 		this.status = order.getStatus();
 		this.total = order.getTotal();
+		this.address = order.getAddress();
 	}
 
 }

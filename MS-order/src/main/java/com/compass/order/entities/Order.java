@@ -1,6 +1,7 @@
 package com.compass.order.entities;
 
 import java.io.Serializable;
+
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class Order implements Serializable {
 	
 	@EqualsAndHashCode.Include
 	@Id
-	private Long id;
+	private String id;
 	private Address address;
 	private Customer customer;
 	private Payment payment;

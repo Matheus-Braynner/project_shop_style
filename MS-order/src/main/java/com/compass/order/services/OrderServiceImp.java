@@ -3,6 +3,8 @@ package com.compass.order.services;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,11 +47,12 @@ public class OrderServiceImp implements OrderService {
 	public OrderDTO insert(OrderFormDTO orderObj) {
 		Order order = new Order();
 		Customer customer = customerClient.findByIdCustomer(orderObj.getCustomer().getId());
-		Address address = customerClient.findByIdAddress(orderObj.getCustomer().getAdressesId());
+		Address address = customerClient.findByIdAddress(orderObj.getCustomer().getAddressId());
 		Payment payment = paymentClient.getPayment(orderObj.getPayment().getId());
 		Installment installment = new Installment();
 		installment.setAmount(orderObj.getPayment().getInstallments());
 		installment.setPayment(payment);
+		installment.setBrand(null);
 		Double total = 0.0;
 		List<Sku> cart = new ArrayList<>();
 		for(SkuDTO skuDTO : orderObj.getCart()) {
@@ -73,13 +76,30 @@ public class OrderServiceImp implements OrderService {
 
 	@Override
 	public List<OrderDTO> findAll() {
-		return null;
+		List<Order> list = orderRepository.findAll();
+		List<OrderDTO> listDTO = list.stream().map(x -> new OrderDTO(x)).collect(Collectors.toList());
+		return listDTO;
 	}
 
 	@Override
-	public List<OrderDTO> findByCustomerId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<OrderDTO> findByCustomerId(Long id, Date startDate, Date endDate, Status status) {
+		Stream<Order> ordersStream  = orderRepository.findByCustomerId(id).stream();
+		
+		if(status != null) {
+			ordersStream = ordersStream.filter(x -> (x.getStatus() == status));
+		}
+		
+		if(startDate != null) {
+			ordersStream = ordersStream.filter(x -> (x.getDate().before(startDate) || x.getDate().equals(startDate)));
+		}
+		
+		if(endDate != null) {
+			ordersStream = ordersStream.filter(x -> (x.getDate().before(endDate) || x.getDate().equals(endDate)));
+		}
+		
+		return ordersStream.map(OrderDTO::new).collect(Collectors.toList());
 	}
+
+	
 
 }

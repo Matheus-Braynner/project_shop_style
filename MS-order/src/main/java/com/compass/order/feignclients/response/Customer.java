@@ -21,12 +21,7 @@ public class Customer implements Serializable {
 	private String firstName;
 	private String lastName;
 	private Gender sex;
-	private String cpf;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private Date birthDate;
 	private String email;
-	private String password;
-	private Boolean active;
-	private Long addressId;
-
 }
