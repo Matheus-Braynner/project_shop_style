@@ -12,4 +12,6 @@ public interface SkuService {
 	SkuDTO findById(Long id);
 	
 	void delete(Long id);
+	
+	SkuDTO updateOrderSku(Long id, Integer quantity);
 }

@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.amqp=2
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.cache=1
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.cloud-eureka=5
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.cloud-eureka-server=1
