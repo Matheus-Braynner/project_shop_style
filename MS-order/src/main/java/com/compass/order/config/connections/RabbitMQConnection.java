@@ -21,7 +21,7 @@ public class RabbitMQConnection {
 	
 	@Autowired
 	private AmqpAdmin amqpAdmin;
-	
+		
 	private Queue queue(String queueName) {
 		return new Queue(queueName, true, false, false);
 	}
