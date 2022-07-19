@@ -14,7 +14,7 @@ import lombok.ToString;
 public class SkuOrder implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private String OrderId;
+	private String orderId;
 	private List<Sku> sku;
 
 }

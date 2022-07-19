@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.compass.order.config.connections.RabbitMQProducer;
 import com.compass.order.config.connections.entity.SkuOrder;
 import com.compass.order.dto.OrderDTO;
 import com.compass.order.dto.OrderFormDTO;
@@ -45,12 +45,12 @@ public class OrderServiceImp implements OrderService {
 	
 	@Autowired
 	private OrderRepository orderRepository;
-	
-	@Autowired
-	private RabbitTemplate rabbitTemplate;
-	
+		
 	@Value("${mq.queues.sku-order}")
 	private String sku_order;
+	
+	@Autowired
+	private RabbitMQProducer rabbitMQProducer;
 	
 	@Override
 	public OrderDTO insert(OrderFormDTO orderObj) {
@@ -80,7 +80,7 @@ public class OrderServiceImp implements OrderService {
 		order.setStatus(Status.PROCESSING_PAYMENT);
 		order.setTotal(total);
 		orderRepository.save(order);
-		rabbitTemplate.convertAndSend(sku_order, builderSku(order));
+		rabbitMQProducer.adds(builderSku(order));
 		return mapper.map(order, OrderDTO.class);
 	}
 
