@@ -2,6 +2,7 @@ package com.compass.mscatalog.services;
 
 import com.compass.mscatalog.dto.SkuDTO;
 import com.compass.mscatalog.dto.SkuFormDTO;
+import com.compass.mscatalog.entities.Sku;
 
 public interface SkuService {
 
@@ -13,5 +14,5 @@ public interface SkuService {
 	
 	void delete(Long id);
 	
-	SkuDTO updateOrderSku(Long id, Integer quantity);
+	Sku updateOrderSku(Long id, Integer quantity);
 }

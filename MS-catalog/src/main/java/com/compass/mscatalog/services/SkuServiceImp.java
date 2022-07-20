@@ -99,12 +99,11 @@ public class SkuServiceImp implements SkuService {
 	}
 
 	@Override
-	public SkuDTO updateOrderSku(Long id, Integer quantity) {
+	public Sku updateOrderSku(Long id, Integer quantity) {
 		Sku sku = skuRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Resource not found, Sku ID = " + id));
 		sku.setQuantity(sku.getQuantity() - quantity);
-		Sku skuSaved = skuRepository.save(mapper.map(sku, Sku.class));
-		return mapper.map(skuSaved, SkuDTO.class);
+		return skuRepository.save(sku);
 	}
 
 	

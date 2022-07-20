@@ -1,27 +1,23 @@
 package com.compass.order.config.connections;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.amqp.core.AmqpAdmin;
-import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.Binding.DestinationType;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-import com.compass.order.config.connections.entity.SkuOrder;
-
-@Component
+@Configuration
 public class RabbitMQProducer {
 	private static final String EXCHANGE_NAME = "amq.direct";
 	
 	@Autowired
-    private AmqpTemplate amqpTemplate;
-	
-	@Autowired
     private AmqpAdmin amqpAdmin;
-
+	
 	private Queue queue(String queueName) {
         return new Queue(queueName, true, false, false);
     }
@@ -34,16 +30,14 @@ public class RabbitMQProducer {
         return new Binding(queue.getName(), DestinationType.QUEUE, exchange.getName(), queue.getName(), null);
     }
     
+    
     @Value("${mq.queues.sku-order}")
     private String sku_order;
 
-    public void adds(SkuOrder skuOrder) {
+    @PostConstruct
+    public void adds() {
         Queue skuQueue = this.queue(sku_order);
         
-        String routingKey = skuOrder.getOrderId();
-        
-        amqpTemplate.convertAndSend(EXCHANGE_NAME, routingKey, skuOrder);
-
         DirectExchange exchange = this.directExchange();
 
         Binding relationOrder = this.relation(skuQueue, exchange);
@@ -54,11 +48,6 @@ public class RabbitMQProducer {
 
         this.amqpAdmin.declareBinding(relationOrder);
         
-        System.out.println("Send msg = " + skuOrder);
     }
     
-//    String routingKey = skuOrder.getOrderId();
-//    amqpTemplate.convertAndSend(EXCHANGE_NAME, routingKey, skuOrder);
-//    System.out.println("Send msg = " + skuOrder);
-
 }

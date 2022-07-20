@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.compass.order.config.connections.RabbitMQProducer;
 import com.compass.order.config.connections.entity.SkuOrder;
 import com.compass.order.dto.OrderDTO;
 import com.compass.order.dto.OrderFormDTO;
@@ -27,6 +27,8 @@ import com.compass.order.feignclients.response.Installment;
 import com.compass.order.feignclients.response.Payment;
 import com.compass.order.feignclients.response.Sku;
 import com.compass.order.repositories.OrderRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class OrderServiceImp implements OrderService {
@@ -50,7 +52,10 @@ public class OrderServiceImp implements OrderService {
 	private String sku_order;
 	
 	@Autowired
-	private RabbitMQProducer rabbitMQProducer;
+	private ObjectMapper objectMapper;
+	
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
 	
 	@Override
 	public OrderDTO insert(OrderFormDTO orderObj) {
@@ -80,7 +85,8 @@ public class OrderServiceImp implements OrderService {
 		order.setStatus(Status.PROCESSING_PAYMENT);
 		order.setTotal(total);
 		orderRepository.save(order);
-		rabbitMQProducer.adds(builderSku(order));
+		String object2String = writeValueAsStringSkuOrder(builderSku(order));
+		rabbitTemplate.convertAndSend(sku_order, object2String);
 		return mapper.map(order, OrderDTO.class);
 	}
 
@@ -116,5 +122,13 @@ public class OrderServiceImp implements OrderService {
 		skuOrder.setSku(order.getCart());
 		return skuOrder;
 	}
+	
+	   private String writeValueAsStringSkuOrder (SkuOrder object) {
+	        try {
+	            return objectMapper.writeValueAsString(object);
+	        } catch (JsonProcessingException e) {
+	            throw new RuntimeException(e);
+	        }
+	    }
 	
 }

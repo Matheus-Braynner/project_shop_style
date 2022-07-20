@@ -1,8 +1,9 @@
 package com.compass.mscatalog.config.connections.entity;
 
 import java.io.Serializable;
-
 import java.util.List;
+
+import com.compass.mscatalog.entities.Sku;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
