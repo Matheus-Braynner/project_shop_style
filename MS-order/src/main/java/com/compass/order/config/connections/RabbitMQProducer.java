@@ -18,6 +18,13 @@ public class RabbitMQProducer {
 	@Autowired
     private AmqpAdmin amqpAdmin;
 	
+	@Value("${mq.queues.sku-order}")
+	private String sku_order;
+	 
+	@Value("${mq.queues.payment-order}")
+	private String payment_order;
+
+	
 	private Queue queue(String queueName) {
         return new Queue(queueName, true, false, false);
     }
@@ -30,24 +37,23 @@ public class RabbitMQProducer {
         return new Binding(queue.getName(), DestinationType.QUEUE, exchange.getName(), queue.getName(), null);
     }
     
-    
-    @Value("${mq.queues.sku-order}")
-    private String sku_order;
-
     @PostConstruct
     public void adds() {
         Queue skuQueue = this.queue(sku_order);
+        Queue paymentQueue = this.queue(payment_order);
         
         DirectExchange exchange = this.directExchange();
 
-        Binding relationOrder = this.relation(skuQueue, exchange);
+        Binding relationSku = this.relation(skuQueue, exchange);
+        Binding relationPayment = this.relation(paymentQueue, exchange);
 
         this.amqpAdmin.declareQueue(skuQueue);
+        this.amqpAdmin.declareQueue(paymentQueue);
 
         this.amqpAdmin.declareExchange(exchange);
-
-        this.amqpAdmin.declareBinding(relationOrder);
-        
+       
+        this.amqpAdmin.declareBinding(relationSku);
+        this.amqpAdmin.declareBinding(relationPayment);
     }
     
 }

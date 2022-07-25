@@ -30,15 +30,12 @@ INDEX VERSION 1.131+C:\project_shop_style\.metadata\.plugins\org.eclipse.jdt.cor
 1649372713.index
 180119415.index
 2614575372.index
-109898552.index
 866936979.index
 3604229543.index
 1061988141.index
 4034212554.index
 2106417651.index
-367195543.index
 467000091.index
-4208267348.index
 960487450.index
 2790083407.index
 2967731355.index
@@ -51,7 +48,6 @@ INDEX VERSION 1.131+C:\project_shop_style\.metadata\.plugins\org.eclipse.jdt.cor
 3179284401.index
 4003612456.index
 935962837.index
-191896260.index
 24381179.index
 1143577769.index
 1602672595.index
@@ -63,7 +59,6 @@ INDEX VERSION 1.131+C:\project_shop_style\.metadata\.plugins\org.eclipse.jdt.cor
 1351005177.index
 3686553812.index
 4227548288.index
-4116929350.index
 981142286.index
 2594899942.index
 1920301915.index
@@ -126,7 +121,6 @@ INDEX VERSION 1.131+C:\project_shop_style\.metadata\.plugins\org.eclipse.jdt.cor
 1458726832.index
 1690670165.index
 8743285.index
-3915888299.index
 287014881.index
 2600373461.index
 3763361654.index
@@ -143,10 +137,8 @@ INDEX VERSION 1.131+C:\project_shop_style\.metadata\.plugins\org.eclipse.jdt.cor
 972150427.index
 3150787241.index
 2133098259.index
-1996126161.index
 3329278278.index
 1074674705.index
-2819556571.index
 2226103539.index
 3701790118.index
 1703131080.index
@@ -213,7 +205,6 @@ INDEX VERSION 1.131+C:\project_shop_style\.metadata\.plugins\org.eclipse.jdt.cor
 488899116.index
 3562752411.index
 610353077.index
-649541133.index
 16337850.index
 2944568364.index
 2557918836.index
@@ -229,7 +220,6 @@ INDEX VERSION 1.131+C:\project_shop_style\.metadata\.plugins\org.eclipse.jdt.cor
 2952766490.index
 2064597786.index
 3770567113.index
-2459213344.index
 1948004283.index
 605509943.index
 2039088792.index
@@ -238,10 +228,8 @@ INDEX VERSION 1.131+C:\project_shop_style\.metadata\.plugins\org.eclipse.jdt.cor
 1300737249.index
 1425734286.index
 3574800236.index
-3344769367.index
 3251121508.index
 3179485063.index
-1329351939.index
 3142679687.index
 3374986485.index
 162199646.index
@@ -249,7 +237,6 @@ INDEX VERSION 1.131+C:\project_shop_style\.metadata\.plugins\org.eclipse.jdt.cor
 2611727710.index
 3339995416.index
 3630195947.index
-1060547546.index
 76892111.index
 612928119.index
 1195102971.index

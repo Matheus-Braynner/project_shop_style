@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.compass.mscatalog.config.connections.entity.SkuOrder;
 import com.compass.mscatalog.entities.Sku;
 import com.compass.mscatalog.services.SkuService;
+import com.compass.mscatalog.services.exception.FailToConvertToObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
@@ -22,7 +23,7 @@ public class RabbitMQConsumer {
 		try {
 			return objectMapper.readValue(message, clazz);
 		} catch (final Exception exception) {
-			throw new IllegalArgumentException();
+			throw new FailToConvertToObject("Fail to convert to object");
 		}
 	}
 

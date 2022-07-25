@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.compass.payment.services.exceptions.DatabaseException;
+import com.compass.payment.services.exceptions.FailToConvertToObject;
 import com.compass.payment.services.exceptions.NotValidPaymentException;
 import com.compass.payment.services.exceptions.ResourceNotFoundException;
 
@@ -36,6 +37,14 @@ public class ControllerExceptionHandler {
 	public ResponseEntity<StandardError> resourceNotFound(NotValidPaymentException e, HttpServletRequest request) {
 			String error = "Database exception";
 			HttpStatus status = HttpStatus.NOT_FOUND;
+			StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+			return ResponseEntity.status(status).body(err);
+	}
+	
+	@ExceptionHandler(FailToConvertToObject.class)
+	public ResponseEntity<StandardError> resourceNotFound(FailToConvertToObject e, HttpServletRequest request) {
+			String error = "Fail to convert to object";
+			HttpStatus status = HttpStatus.BAD_REQUEST;
 			StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
 			return ResponseEntity.status(status).body(err);
 	}

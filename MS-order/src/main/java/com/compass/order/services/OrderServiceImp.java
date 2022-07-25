@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.compass.order.config.connections.entity.PaymentStatus;
 import com.compass.order.config.connections.entity.SkuOrder;
 import com.compass.order.dto.OrderDTO;
 import com.compass.order.dto.OrderFormDTO;
@@ -27,6 +28,7 @@ import com.compass.order.feignclients.response.Installment;
 import com.compass.order.feignclients.response.Payment;
 import com.compass.order.feignclients.response.Sku;
 import com.compass.order.repositories.OrderRepository;
+import com.compass.order.services.exceptions.ResourceNotFoundException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -50,6 +52,9 @@ public class OrderServiceImp implements OrderService {
 		
 	@Value("${mq.queues.sku-order}")
 	private String sku_order;
+	
+	@Value("${mq.queues.payment-order}")
+	private String payment_order;
 	
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -121,6 +126,18 @@ public class OrderServiceImp implements OrderService {
 		skuOrder.setOrderId(order.getId());
 		skuOrder.setSku(order.getCart());
 		return skuOrder;
+	}
+	
+	
+	
+	
+	public OrderDTO builderPayment(PaymentStatus paymentStatus) {
+		Order order = orderRepository.findById(paymentStatus.getOrderId())
+				.orElseThrow(() -> new ResourceNotFoundException("Order id: " + paymentStatus.getOrderId()));
+		
+		order.setStatus(paymentStatus.getStatus());
+		orderRepository.save(order);
+		return mapper.map(order, OrderDTO.class);
 	}
 	
 	   private String writeValueAsStringSkuOrder (SkuOrder object) {
