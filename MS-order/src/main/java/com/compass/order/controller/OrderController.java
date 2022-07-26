@@ -42,6 +42,12 @@ public class OrderController {
 		return ResponseEntity.ok().body(listOrder);
 	}
 	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<OrderDTO> findById(@PathVariable String id) {
+		OrderDTO order = orderService.findById(id);
+		return ResponseEntity.ok().body(order);
+	}
+	
 	@GetMapping(value = "/customers/{id}")
 	public ResponseEntity<List<OrderDTO>> findByCustomerId(@PathVariable Long id, @RequestParam(required = false) Date startDate, 
 			@RequestParam(required = false) Date endDate, @RequestParam(required = false) Status status){

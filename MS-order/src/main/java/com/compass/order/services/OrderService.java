@@ -13,6 +13,8 @@ public interface OrderService {
 	
 	List<OrderDTO> findAll();
 	
+	OrderDTO findById(String id);
+	
 	List<OrderDTO> findByCustomerId(Long id, Date startDate, Date endDate, Status status);
 
 }

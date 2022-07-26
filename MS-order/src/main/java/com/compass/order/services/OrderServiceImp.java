@@ -104,7 +104,7 @@ public class OrderServiceImp implements OrderService {
 
 	@Override
 	public List<OrderDTO> findByCustomerId(Long id, Date startDate, Date endDate, Status status) {
-		Stream<Order> ordersStream  = orderRepository.findByCustomerId(id).stream();
+		Stream<Order> ordersStream = orderRepository.findByCustomerId(id).stream();
 		
 		if(status != null) {
 			ordersStream = ordersStream.filter(x -> (x.getStatus() == status));
@@ -147,5 +147,12 @@ public class OrderServiceImp implements OrderService {
 	            throw new RuntimeException(e);
 	        }
 	    }
+
+	@Override
+	public OrderDTO findById(String id) {
+		Order findOrder = orderRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Order not found, Id : " + id));
+		return mapper.map(findOrder, OrderDTO.class);		
+	}
 	
 }
