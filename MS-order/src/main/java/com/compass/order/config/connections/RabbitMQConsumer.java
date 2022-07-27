@@ -29,6 +29,6 @@ public class RabbitMQConsumer {
 	@RabbitListener(queues = "${mq.queues.sku-order}")
 	public void processMessage(String paymentStatus) {
 		PaymentStatus paymentOrder2Object = toObject(paymentStatus, PaymentStatus.class);
-		orderServiceImp.builderPayment(paymentOrder2Object);
+		orderServiceImp.builderStatusPayment(paymentOrder2Object);
 	}
 }

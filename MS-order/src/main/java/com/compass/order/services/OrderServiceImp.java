@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.compass.order.config.connections.entity.PaymentOrder;
 import com.compass.order.config.connections.entity.PaymentStatus;
 import com.compass.order.config.connections.entity.SkuOrder;
 import com.compass.order.dto.OrderDTO;
@@ -21,6 +22,7 @@ import com.compass.order.enums.Status;
 import com.compass.order.feignclients.CatalogClient;
 import com.compass.order.feignclients.CustomerClient;
 import com.compass.order.feignclients.PaymentClient;
+import com.compass.order.feignclients.request.PaymentDTO;
 import com.compass.order.feignclients.request.SkuDTO;
 import com.compass.order.feignclients.response.Address;
 import com.compass.order.feignclients.response.Customer;
@@ -56,6 +58,9 @@ public class OrderServiceImp implements OrderService {
 	@Value("${mq.queues.payment-order}")
 	private String payment_order;
 	
+	@Value("${mq.queues.order-audit}")
+	private String audit_order;
+	
 	@Autowired
 	private ObjectMapper objectMapper;
 	
@@ -90,8 +95,11 @@ public class OrderServiceImp implements OrderService {
 		order.setStatus(Status.PROCESSING_PAYMENT);
 		order.setTotal(total);
 		orderRepository.save(order);
-		String object2String = writeValueAsStringSkuOrder(builderSku(order));
-		rabbitTemplate.convertAndSend(sku_order, object2String);
+		String skuOrder2String = writeValueAsStringSkuOrder(builderSku(order));
+		String paymentOrder2String = writeValueAsStringPayment(builderPayment(order));
+		rabbitTemplate.convertAndSend(sku_order, skuOrder2String);
+		rabbitTemplate.convertAndSend(payment_order, paymentOrder2String);
+		rabbitTemplate.convertAndSend(audit_order, order);
 		return mapper.map(order, OrderDTO.class);
 	}
 
@@ -128,10 +136,18 @@ public class OrderServiceImp implements OrderService {
 		return skuOrder;
 	}
 	
+	public PaymentOrder builderPayment(Order order) {
+		PaymentOrder paymentOrder = new PaymentOrder();
+		PaymentDTO paymentDTO = new PaymentDTO();
+		
+		paymentDTO.setId(order.getPayment().getId());
+		paymentDTO.setInstallments(order.getInstallment().getAmount());
+		paymentOrder.setOrderId(order.getId());
+		paymentOrder.setPayment(paymentDTO);
+		return paymentOrder;
+	}
 	
-	
-	
-	public OrderDTO builderPayment(PaymentStatus paymentStatus) {
+	public OrderDTO builderStatusPayment(PaymentStatus paymentStatus) {
 		Order order = orderRepository.findById(paymentStatus.getOrderId())
 				.orElseThrow(() -> new ResourceNotFoundException("Order id: " + paymentStatus.getOrderId()));
 		
@@ -147,6 +163,14 @@ public class OrderServiceImp implements OrderService {
 	            throw new RuntimeException(e);
 	        }
 	    }
+	   
+	   private String writeValueAsStringPayment (PaymentOrder object) {
+		   try {
+	            return objectMapper.writeValueAsString(object);
+	        } catch (JsonProcessingException e) {
+	            throw new RuntimeException(e);
+	        }
+	   }
 
 	@Override
 	public OrderDTO findById(String id) {

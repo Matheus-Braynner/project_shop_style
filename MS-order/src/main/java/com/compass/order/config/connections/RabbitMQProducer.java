@@ -23,6 +23,9 @@ public class RabbitMQProducer {
 	 
 	@Value("${mq.queues.payment-order}")
 	private String payment_order;
+	
+	@Value("${mq.queues.order-audit}")
+	private String audit_order;
 
 	
 	private Queue queue(String queueName) {
@@ -41,19 +44,23 @@ public class RabbitMQProducer {
     public void adds() {
         Queue skuQueue = this.queue(sku_order);
         Queue paymentQueue = this.queue(payment_order);
+        Queue auditQueue = this.queue(audit_order);
         
         DirectExchange exchange = this.directExchange();
 
         Binding relationSku = this.relation(skuQueue, exchange);
         Binding relationPayment = this.relation(paymentQueue, exchange);
+        Binding relationAudit = this.relation(auditQueue, exchange);
 
         this.amqpAdmin.declareQueue(skuQueue);
         this.amqpAdmin.declareQueue(paymentQueue);
+        this.amqpAdmin.declareQueue(auditQueue);
 
         this.amqpAdmin.declareExchange(exchange);
        
         this.amqpAdmin.declareBinding(relationSku);
         this.amqpAdmin.declareBinding(relationPayment);
+        this.amqpAdmin.declareBinding(relationAudit);
     }
     
 }
