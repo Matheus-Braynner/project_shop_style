@@ -153,6 +153,7 @@ public class OrderServiceImp implements OrderService {
 		
 		order.setStatus(paymentStatus.getStatus());
 		orderRepository.save(order);
+		rabbitTemplate.convertAndSend(audit_order, order);
 		return mapper.map(order, OrderDTO.class);
 	}
 	

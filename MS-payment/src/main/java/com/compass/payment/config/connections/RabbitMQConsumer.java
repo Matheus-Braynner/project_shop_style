@@ -18,7 +18,6 @@ public class RabbitMQConsumer {
 	@Autowired
 	private PaymentServiceImp paymentServiceImp;
 	
-	
 	public PaymentOrder toObject(final String message, final Class<PaymentOrder> clazz) {
 		try {
 			return objectMapper.readValue(message, clazz);
