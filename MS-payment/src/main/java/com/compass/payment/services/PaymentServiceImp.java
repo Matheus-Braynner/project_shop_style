@@ -69,7 +69,7 @@ public class PaymentServiceImp implements PaymentService {
 		}
 	}
 
-	public void statusMessageRabbit(PaymentOrder paymentOrder) {
+	public Status statusMessageRabbit(PaymentOrder paymentOrder) {
 		Payment payment = paymentRepository.findById(paymentOrder.getPayment().getId()).orElseThrow(
 				() -> new ResourceNotFoundException("Payment not found, ID = " + paymentOrder.getPayment().getId()));
 
@@ -95,5 +95,6 @@ public class PaymentServiceImp implements PaymentService {
 			status = Status.PAYMENT_NOT_FOUND;
 		}
 		rabbitTemplate.convertAndSend(orderPayment, new PaymentStatus(paymentOrder.getOrderId(), status));
+		return status;
 	}
 }
