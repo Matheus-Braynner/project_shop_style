@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.compass.mscatalog.dto.CategoryDTO;
 import com.compass.mscatalog.dto.CategoryFormDTO;
+import com.compass.mscatalog.dto.ProductDTO;
 
 public interface CategoryService {
 
@@ -11,7 +12,7 @@ public interface CategoryService {
 	
 	List<CategoryDTO> findAll();
 	
-	CategoryDTO findById(Long id);
+	List<ProductDTO> findProductsByIdCategory(Long id);
 	
 	void delete(Long id);
 	

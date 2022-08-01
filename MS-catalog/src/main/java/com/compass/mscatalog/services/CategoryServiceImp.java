@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.compass.mscatalog.dto.CategoryDTO;
 import com.compass.mscatalog.dto.CategoryFormDTO;
+import com.compass.mscatalog.dto.ProductDTO;
 import com.compass.mscatalog.entities.Category;
 import com.compass.mscatalog.repositories.CategoryRepository;
 import com.compass.mscatalog.services.exception.DatabaseException;
@@ -54,10 +55,11 @@ public class CategoryServiceImp implements CategoryService {
 	}
 	
 	@Override
-	public CategoryDTO findById(Long id) {
+	public List<ProductDTO> findProductsByIdCategory(Long id) {
 		Category category = categoryRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Object not found, id : " + id));
-		return mapper.map(category, CategoryDTO.class);
+		List<ProductDTO> products = category.getProducts().stream().map(ProductDTO::new).collect(Collectors.toList());
+		return products;
 	}
 
 	@Override

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.compass.mscatalog.dto.CategoryDTO;
 import com.compass.mscatalog.dto.CategoryFormDTO;
+import com.compass.mscatalog.dto.ProductDTO;
 import com.compass.mscatalog.services.CategoryServiceImp;
 
 @RestController
@@ -42,9 +43,9 @@ public class CategoryController {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<CategoryDTO> findById(@PathVariable Long id) {
-		CategoryDTO category = categoryService.findById(id);
-		return ResponseEntity.ok(category);
+	public ResponseEntity<List<ProductDTO>> findProductsByIdCategory(@PathVariable Long id) {
+		List<ProductDTO> products = categoryService.findProductsByIdCategory(id);
+		return ResponseEntity.ok(products);
 	}
 	
 	@DeleteMapping(value = "/{id}")
