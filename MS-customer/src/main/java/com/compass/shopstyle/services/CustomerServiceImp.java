@@ -60,10 +60,10 @@ public class CustomerServiceImp implements CustomerService {
 	@Override
 	public CustomerDTO login(CustomerLoginFormDTO customerLoginObj) {
 		Customer customer = customerRepository.findByEmail(customerLoginObj.getEmail());
-		if(!passwordEncoder.matches(customerLoginObj.getPassword(), customer.getPassword())) {
-			throw new EmailOrPasswordException("wrong email or password");
+		if(customer != null && passwordEncoder.matches(customerLoginObj.getPassword(), customer.getPassword())) {
+			return mapper.map(customer, CustomerDTO.class);
 		}
-		return mapper.map(customer, CustomerDTO.class);
+		throw new EmailOrPasswordException("wrong email or password");
 	}
 	
 	@Override

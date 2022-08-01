@@ -27,7 +27,7 @@ public interface CustomerClient {
 	@PostMapping(value = "/v1/customers/login")
 	CustomerDTO login(@Valid @RequestBody CustomerLoginFormDTO customerLoginBody);
 	
-	@PutMapping(value = "/login/{id}")
+	@PutMapping(value = "/v1/customers/login/{id}")
 	CustomerDTO changePassword(@PathVariable Long id, @Valid @RequestBody ChangePasswordDTO changePasswordBody);
 	
 	@PostMapping(value = "/v1/customers")

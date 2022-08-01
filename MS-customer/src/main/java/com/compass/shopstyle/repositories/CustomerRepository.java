@@ -11,6 +11,5 @@ import com.compass.shopstyle.entities.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-	@Transactional(readOnly = true)
 	Customer findByEmail(String email);
 }

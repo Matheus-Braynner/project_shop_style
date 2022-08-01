@@ -39,8 +39,8 @@ public class CustomerController {
 	@PostMapping(value = "/login")
 	@Transactional
 	public ResponseEntity<CustomerDTO> login(@Valid @RequestBody CustomerLoginFormDTO customerLoginBody) {
-		CustomerDTO customer = customerService.login(customerLoginBody);
-		return ResponseEntity.ok().body(customer);
+		customerService.login(customerLoginBody);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).build();
 	}
 	
 	@GetMapping(value = "/{id}")
@@ -59,8 +59,8 @@ public class CustomerController {
 	@PutMapping(value = "/login/{id}")
 	@Transactional
 	public ResponseEntity<CustomerDTO> changePassword(@PathVariable Long id, @Valid @RequestBody ChangePasswordDTO changePasswordBody) {
-		CustomerDTO customer = customerService.changePassword(id, changePasswordBody);
-		return ResponseEntity.ok(customer);
+		customerService.changePassword(id, changePasswordBody);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).build();
 	}
 	
 	
