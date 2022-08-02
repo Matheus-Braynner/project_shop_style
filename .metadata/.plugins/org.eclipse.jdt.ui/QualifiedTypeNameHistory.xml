@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.amqp.core.Binding"/>
-    <fullyQualifiedTypeName name="org.springframework.amqp.core.Binding.DestinationType"/>
-    <fullyQualifiedTypeName name="org.springframework.amqp.core.Queue"/>
-    <fullyQualifiedTypeName name="com.compass.order.config.connections.entity.SkuOrder"/>
-    <fullyQualifiedTypeName name="com.compass.payment.dto.PaymentDTO"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
-    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
-    <fullyQualifiedTypeName name="java.io.Serializable"/>
-    <fullyQualifiedTypeName name="com.compass.payment.config.connections.entities.PaymentDTO"/>
-    <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
-    <fullyQualifiedTypeName name="com.compass.payment.config.connections.entities.PaymentOrder"/>
-    <fullyQualifiedTypeName name="com.compass.payment.services.exceptions.ResourceNotFoundException"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="com.compass.msclaudit.feignclients.OrderClient"/>
-    <fullyQualifiedTypeName name="com.compass.msclaudit.repositories.AuditRepository"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
@@ -45,14 +29,10 @@
     <fullyQualifiedTypeName name="com.compass.order.feignclients.request.enums.Size"/>
     <fullyQualifiedTypeName name="com.compass.order.feignclients.response.Media"/>
     <fullyQualifiedTypeName name="org.hibernate.validator.constraints.br.CPF"/>
-    <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.enums.Status"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.response.Address"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
-    <fullyQualifiedTypeName name="org.springframework.cloud.openfeign.FeignClient"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.payment.CustomerFormDTO"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.response.Customer"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.CustomerClient"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.customer.CustomerDTO"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
@@ -60,4 +40,24 @@
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.customer.CustomerNewFormDTO"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
     <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.annotation.EnableRabbit"/>
+    <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.CatalogClient"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.compass.mscatalog.entities.Product"/>
+    <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+    <fullyQualifiedTypeName name="com.compass.mscatalog.dto.ProductDTO"/>
+    <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.order.PaymentDTO"/>
+    <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.PaymentClient"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+    <fullyQualifiedTypeName name="org.springframework.cloud.openfeign.FeignClient"/>
+    <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.enums.Status"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.OrderClient"/>
+    <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.payment.PaymentDTO"/>
+    <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.catalog.CategoryDTO"/>
+    <fullyQualifiedTypeName name="com.compass.shopstyle.entities.Customer"/>
+    <fullyQualifiedTypeName name="com.compass.shopstyle.services.exceptions.ResourceNotFoundException"/>
+    <fullyQualifiedTypeName name="com.compass.shopstyle.services.exceptions.EmailOrPasswordException"/>
+    <fullyQualifiedTypeName name="com.compass.shopstyle.dto.CustomerDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <fullyQualifiedTypeName name="java.security.SecureRandom"/>
 </qualifiedTypeNameHistroy>
