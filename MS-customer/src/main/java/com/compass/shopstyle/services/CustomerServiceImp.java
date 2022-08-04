@@ -87,6 +87,11 @@ public class CustomerServiceImp implements CustomerService {
 		return false;
 	}
 
+	@Override
+	public Customer findByEmail(String email) {
+		return customerRepository.findByEmail(email);
+	}
+
 	
 
 }

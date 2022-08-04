@@ -1,24 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
-    <fullyQualifiedTypeName name="com.compass.msclaudit.feignclients.requests.OrderDTO"/>
-    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
-    <fullyQualifiedTypeName name="com.compass.msclaudit.services.AuditService"/>
-    <fullyQualifiedTypeName name="javax.validation.Valid"/>
-    <fullyQualifiedTypeName name="com.compass.msclaudit.feignclients.response.Order"/>
-    <fullyQualifiedTypeName name="org.modelmapper.ModelMapper"/>
-    <fullyQualifiedTypeName name="com.compass.msclaudit.feignclients.requests.OrderFormDTO"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
-    <fullyQualifiedTypeName name="com.compass.order.config.connections.entity.PaymentOrder"/>
-    <fullyQualifiedTypeName name="com.compass.order.feignclients.request.PaymentDTO"/>
-    <fullyQualifiedTypeName name="com.compass.order.config.connections.entity.PaymentStatus"/>
-    <fullyQualifiedTypeName name="com.compass.msaudit.feignclients.response.Status"/>
-    <fullyQualifiedTypeName name="com.compass.msaudit.feignclients.response.Order"/>
-    <fullyQualifiedTypeName name="com.compass.msaudit.feignclients.response.Address"/>
-    <fullyQualifiedTypeName name="com.compass.msaudit.enums.Size"/>
-    <fullyQualifiedTypeName name="com.compass.msaudit.enums.Status"/>
     <fullyQualifiedTypeName name="com.compass.msaudit.entities.Address"/>
     <fullyQualifiedTypeName name="com.compass.msaudit.services.exceptions.ResourceNotFoundException"/>
     <fullyQualifiedTypeName name="com.compass.msaudit.dto.OrderDTO"/>
@@ -31,7 +12,6 @@
     <fullyQualifiedTypeName name="org.hibernate.validator.constraints.br.CPF"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.response.Address"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.payment.CustomerFormDTO"/>
-    <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.response.Customer"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.CustomerClient"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.customer.CustomerDTO"/>
@@ -50,7 +30,6 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
     <fullyQualifiedTypeName name="org.springframework.cloud.openfeign.FeignClient"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.enums.Status"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.OrderClient"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.payment.PaymentDTO"/>
     <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.request.catalog.CategoryDTO"/>
@@ -60,4 +39,25 @@
     <fullyQualifiedTypeName name="com.compass.shopstyle.dto.CustomerDTO"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <fullyQualifiedTypeName name="java.security.SecureRandom"/>
+    <fullyQualifiedTypeName name="springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc"/>
+    <fullyQualifiedTypeName name="springfox.documentation.spi.DocumentationType"/>
+    <fullyQualifiedTypeName name="springfox.documentation.swagger2.annotations.EnableSwagger2"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetailsService"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.compass.msbffshop.repositories.CustomerRepository"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="com.compass.msbffshop.config.security.exceptions.UsernameNotFoundException"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UsernameNotFoundException"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.GrantedAuthority"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.Authentication"/>
+    <fullyQualifiedTypeName name="com.compass.msbffshop.feignclients.response.Customer"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="org.springframework.security.config.web.server.ServerHttpSecurity.OAuth2ResourceServerSpec.JwtSpec"/>
+    <fullyQualifiedTypeName name="org.springframework.security.config.annotation.rsocket.RSocketSecurity.JwtSpec"/>
 </qualifiedTypeNameHistroy>

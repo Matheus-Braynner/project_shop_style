@@ -30,6 +30,8 @@
 	<section name="completion_proposal_size">
 		<item key="size.x" value="1072"/>
 		<item key="size.y" value="494"/>
+		<item key="contextSelector.size.x" value="346"/>
+		<item key="contextSelector.size.y" value="336"/>
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
