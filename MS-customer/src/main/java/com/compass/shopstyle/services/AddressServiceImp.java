@@ -34,7 +34,7 @@ public class AddressServiceImp implements AddressService {
 	public AddressDTO insert(AddressFormDTO addressObj) {
 		addressObj.setId(null);
 		Customer customer = customerRepository.findById(addressObj.getCustomerId())
-				.orElseThrow(() -> new ResourceNotFoundException(addressObj.getCustomerId()));
+				.orElseThrow(() -> new ResourceNotFoundException("Customer not found, ID = " + addressObj.getCustomerId()));
 		Address address = mapper.map(addressObj, Address.class);
 		address.setCustomerId(customer);
 		Address addressSaved = addressRepository.save(mapper.map(address, Address.class));
@@ -51,14 +51,14 @@ public class AddressServiceImp implements AddressService {
 	@Override
 	public AddressDTO findById(Long id) {
 		Address address = addressRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Resource not found, id = " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Address not found, ID = " + id));
 		return mapper.map(address, AddressDTO.class);
 	}
 
 	@Override
 	public AddressDTO update(Long id, AddressFormDTO addressObj) {
 		Address address = addressRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Resource not found, id = " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Address not found, ID = " + id));
 		address.setState(addressObj.getState());
 		address.setCity(addressObj.getCity());
 		address.setDistrict(addressObj.getDistrict());

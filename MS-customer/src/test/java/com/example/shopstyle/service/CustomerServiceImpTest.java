@@ -1,6 +1,7 @@
 package com.example.shopstyle.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -24,6 +25,7 @@ import com.compass.shopstyle.entities.Customer;
 import com.compass.shopstyle.entities.enums.Gender;
 import com.compass.shopstyle.repositories.CustomerRepository;
 import com.compass.shopstyle.services.CustomerService;
+import com.compass.shopstyle.services.exceptions.EmailNotFoundException;
 import com.compass.shopstyle.services.exceptions.ResourceNotFoundException;
 import com.example.shopstyle.builder.CustomerBuilder;
 
@@ -81,13 +83,13 @@ public class CustomerServiceImpTest {
 	public void whenFindByIdThrowException() {
 		Customer customer = CustomerBuilder.getCustomer();
 		
-		when(this.repository.findById(anyLong())).thenReturn(Optional.of(customer));
+		when(this.repository.findById(anyLong())).thenReturn(Optional.empty());
 		
 		try {
-			this.service.findById(1L);
+			this.service.findById(customer.getId());
 		} catch (Exception e) {
-			assertEquals(ResourceNotFoundException.class, e.getClass());
-			assertEquals("Id not found = " + 1L, e.getMessage());
+			assertThatExceptionOfType(ResourceNotFoundException.class);
+			assertEquals("Customer not found, ID = " +  1L, e.getMessage());
 		}
 	}
 	
@@ -124,6 +126,22 @@ public class CustomerServiceImpTest {
 	}
 	
 	@Test
+	@DisplayName("Update customer Exception")
+	public void whenTryUpdateCustomerThenReturnException() {
+		Customer customer = CustomerBuilder.getCustomer();
+		CustomerNewFormDTO customerNewFormDTO = CustomerBuilder.getCustomerNewFormDTO();
+		
+		when(this.repository.findById(anyLong())).thenReturn(Optional.empty());
+		
+		try {
+			this.service.update(customer.getId(), customerNewFormDTO);
+		} catch(Exception e) {
+			assertThatExceptionOfType(ResourceNotFoundException.class);
+			assertEquals("Customer not found, ID = " +  customer.getId(), e.getMessage());
+		}
+	}
+	
+	@Test
 	@DisplayName("Find By Email")
 	public void whenFindByEmailReturnCustomer() {
 		Customer customer = CustomerBuilder.getCustomer();
@@ -143,6 +161,14 @@ public class CustomerServiceImpTest {
 		assertEquals("123456", response.getPassword());
 		assertEquals(true, response.getActive());
 		
+	}
+	
+	@Test
+	@DisplayName("Email not Found")
+	public void whenExistingEmailThenThrowException() {
+		when(this.repository.findByEmail(null)).thenReturn(null);
+		
+		assertThatExceptionOfType(EmailNotFoundException.class);
 	}
 	
 //	@Test

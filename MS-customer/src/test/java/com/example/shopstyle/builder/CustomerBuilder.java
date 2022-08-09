@@ -11,11 +11,12 @@ import com.compass.shopstyle.entities.enums.Gender;
 
 public final class CustomerBuilder {
 	
+	public static final Long ID = 1L;
 	public static final Date BIRTHDAY = new Date();
 	
 	public static CustomerFormDTO getCustomerFormDTO() {
 		CustomerFormDTO customerFormDTO = new CustomerFormDTO();
-		customerFormDTO.setId(1L);
+		customerFormDTO.setId(ID);
 		customerFormDTO.setFirstName("Matheus");
 		customerFormDTO.setLastName("Souza");
 		customerFormDTO.setSex(Gender.MAN);
@@ -30,7 +31,7 @@ public final class CustomerBuilder {
 	
 	public static CustomerDTO getCustomerDTO() {
 		CustomerDTO customerDTO = new CustomerDTO();
-		customerDTO.setId(1L);
+		customerDTO.setId(ID);
 		customerDTO.setFirstName("Matheus");
 		customerDTO.setLastName("Souza");
 		customerDTO.setSex(Gender.MAN);
@@ -42,7 +43,7 @@ public final class CustomerBuilder {
 	
 	public static Customer getCustomer() {
 		Customer customer = new Customer();
-		customer.setId(1L);
+		customer.setId(ID);
 		customer.setFirstName("Matheus");
 		customer.setLastName("Souza");
 		customer.setSex(Gender.MAN);
@@ -56,7 +57,7 @@ public final class CustomerBuilder {
 	
 	public static CustomerNewFormDTO getCustomerNewFormDTO() {
 		CustomerNewFormDTO customerNewFormDTO = new CustomerNewFormDTO();
-		customerNewFormDTO.setId(1L);
+		customerNewFormDTO.setId(ID);
 		customerNewFormDTO.setFirstName("Matheus");
 		customerNewFormDTO.setLastName("Souza");
 		customerNewFormDTO.setSex(Gender.MAN);

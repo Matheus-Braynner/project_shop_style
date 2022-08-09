@@ -35,21 +35,21 @@ public class CustomerServiceImp implements CustomerService {
 
 	@Override
 	public CustomerDTO findById(Long id) {
-		Customer user = customerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
-		return mapper.map(user, CustomerDTO.class);
+		Customer customer = customerRepository.findById(id).orElseThrow(() ->new ResourceNotFoundException("Customer not found, ID = " + id));
+		return mapper.map(customer, CustomerDTO.class);
 	}
 
 	@Override
 	public CustomerDTO update(Long id, CustomerNewFormDTO customerObj) {
-		Customer custom = customerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
-		custom.setFirstName(customerObj.getFirstName());
-		custom.setLastName(customerObj.getLastName());
-		custom.setSex(customerObj.getSex());
-		custom.setCpf(customerObj.getCpf());
-		custom.setBirthDate(customerObj.getBirthDate());
-		custom.setEmail(customerObj.getEmail());
-		custom.setPassword(new BCryptPasswordEncoder().encode(customerObj.getPassword()));
-		Customer userUpdated = customerRepository.save(custom);
+		Customer customer = customerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Customer not found, ID = " + id));
+		customer.setFirstName(customerObj.getFirstName());
+		customer.setLastName(customerObj.getLastName());
+		customer.setSex(customerObj.getSex());
+		customer.setCpf(customerObj.getCpf());
+		customer.setBirthDate(customerObj.getBirthDate());
+		customer.setEmail(customerObj.getEmail());
+		customer.setPassword(new BCryptPasswordEncoder().encode(customerObj.getPassword()));
+		Customer userUpdated = customerRepository.save(customer);
 		return mapper.map(userUpdated, CustomerDTO.class);
 
 	}
@@ -66,7 +66,7 @@ public class CustomerServiceImp implements CustomerService {
 	@Override
 	public CustomerDTO changePassword(Long id, ChangePasswordDTO changePasswordObj) {
 		Customer customer = customerRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException(id));
+				.orElseThrow(() -> new ResourceNotFoundException("Customer not found, ID = " +  id));
 		if(verifyPssword(customer, changePasswordObj)) {
 			customer.setPassword(changePasswordObj.getNewPassword());
 			return mapper.map(customer, CustomerDTO.class);
