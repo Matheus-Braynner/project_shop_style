@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.compass.msbffshop.feignclients.response.Customer;
+import com.compass.msbffshop.feignclients.response.CustomerLogin;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JWTAuthenticateFilter extends UsernamePasswordAuthenticationFilter {
@@ -30,14 +30,14 @@ public class JWTAuthenticateFilter extends UsernamePasswordAuthenticationFilter 
 	
 	public JWTAuthenticateFilter(AuthenticationManager authenticationManager) {
 		this.authenticationManager = authenticationManager;
-		setFilterProcessesUrl("/bffshop/v1/customers/login");
+		setFilterProcessesUrl("/v1/login");
 	}
 	
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
 		try {
-			Customer customer = new ObjectMapper().readValue(request.getInputStream(), Customer.class);
+			CustomerLogin customer = new ObjectMapper().readValue(request.getInputStream(), CustomerLogin.class);
 			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 					customer.getEmail(), customer.getPassword(), new ArrayList<>()));
 		} catch (IOException e) {
@@ -54,7 +54,6 @@ public class JWTAuthenticateFilter extends UsernamePasswordAuthenticationFilter 
 				.withSubject(customerData.getUsername())
 				.withExpiresAt(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION))
 				.sign(Algorithm.HMAC512(TOKEN_PASSWORD));
-		
 		response.getWriter().write(token);
 		response.getWriter().flush();
 				

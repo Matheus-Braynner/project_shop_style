@@ -2,7 +2,9 @@ package com.compass.shopstyle.dto;
 
 import java.io.Serializable;
 
-import com.compass.shopstyle.entities.Customer;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,12 +14,11 @@ import lombok.NoArgsConstructor;
 public class CustomerLoginFormDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@NotNull
+	@NotEmpty
 	private String email;
+	@NotNull
+	@NotEmpty
 	private String password;
-	
-	
-	public CustomerLoginFormDTO (Customer customer) {
-		this.email = customer.getEmail();
-		this.password = customer.getPassword();
-	}
+
 }

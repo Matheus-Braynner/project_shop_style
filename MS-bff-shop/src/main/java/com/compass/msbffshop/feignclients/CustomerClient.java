@@ -2,7 +2,6 @@ package com.compass.msbffshop.feignclients;
 
 import javax.validation.Valid;
 
-
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -21,7 +20,7 @@ import com.compass.msbffshop.feignclients.request.customer.CustomerDTO;
 import com.compass.msbffshop.feignclients.request.customer.CustomerFormDTO;
 import com.compass.msbffshop.feignclients.request.customer.CustomerLoginFormDTO;
 import com.compass.msbffshop.feignclients.request.customer.CustomerNewFormDTO;
-import com.compass.msbffshop.feignclients.response.Customer;
+import com.compass.msbffshop.feignclients.response.CustomerLogin;
 
 @Component
 @FeignClient("MS-customer")
@@ -52,6 +51,6 @@ public interface CustomerClient {
 	public ResponseEntity<Void> delete(@PathVariable Long id);
 	
 	@GetMapping(value = "/v1/customers")
-	Customer findByEmail(@RequestParam(required = true) String email);
+	CustomerLogin findByEmail(@RequestParam(required = true) String email);
 	
 }

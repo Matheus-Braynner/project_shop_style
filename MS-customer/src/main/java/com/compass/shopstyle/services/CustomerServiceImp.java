@@ -20,9 +20,6 @@ import com.compass.shopstyle.services.exceptions.ResourceNotFoundException;
 public class CustomerServiceImp implements CustomerService {
 
 	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
-
-	@Autowired
 	private ModelMapper mapper;
 
 	@Autowired
@@ -32,7 +29,7 @@ public class CustomerServiceImp implements CustomerService {
 	public CustomerDTO insert(CustomerFormDTO customerObj) {
 		customerObj.setId(null);
 		Customer user = customerRepository.save(mapper.map(customerObj, Customer.class));
-		user.setPassword(passwordEncoder.encode(customerObj.getPassword()));
+		user.setPassword(new BCryptPasswordEncoder().encode(customerObj.getPassword()));
 		return mapper.map(user, CustomerDTO.class);
 	}
 
@@ -51,7 +48,7 @@ public class CustomerServiceImp implements CustomerService {
 		custom.setCpf(customerObj.getCpf());
 		custom.setBirthDate(customerObj.getBirthDate());
 		custom.setEmail(customerObj.getEmail());
-		custom.setPassword(passwordEncoder.encode(customerObj.getPassword()));
+		custom.setPassword(new BCryptPasswordEncoder().encode(customerObj.getPassword()));
 		Customer userUpdated = customerRepository.save(custom);
 		return mapper.map(userUpdated, CustomerDTO.class);
 
@@ -60,7 +57,7 @@ public class CustomerServiceImp implements CustomerService {
 	@Override
 	public CustomerDTO login(CustomerLoginFormDTO customerLoginObj) {
 		Customer customer = customerRepository.findByEmail(customerLoginObj.getEmail());
-		if(customer != null && passwordEncoder.matches(customerLoginObj.getPassword(), customer.getPassword())) {
+		if(customer != null && new BCryptPasswordEncoder().matches(customerLoginObj.getPassword(), customer.getPassword())) {
 			return mapper.map(customer, CustomerDTO.class);
 		}
 		throw new EmailOrPasswordException("wrong email or password");
@@ -78,7 +75,7 @@ public class CustomerServiceImp implements CustomerService {
 	}
 	
 	private Boolean verifyPssword(Customer customerObj, ChangePasswordDTO changePasswordObj) {
-		if(passwordEncoder.matches(changePasswordObj.getOldPassword(), customerObj.getPassword())
+		if(new BCryptPasswordEncoder().matches(changePasswordObj.getOldPassword(), customerObj.getPassword())
 				&& changePasswordObj.getCpf().equals(customerObj.getCpf())
 				&& changePasswordObj.getEmail().equals(customerObj.getEmail())
 				&& changePasswordObj.getNewPassword().equals(changePasswordObj.getNewPasswordConfirmation())) {

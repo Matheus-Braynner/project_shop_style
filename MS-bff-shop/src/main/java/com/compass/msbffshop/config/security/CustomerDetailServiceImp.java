@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.compass.msbffshop.feignclients.CustomerClient;
-import com.compass.msbffshop.feignclients.response.Customer;
+import com.compass.msbffshop.feignclients.response.CustomerLogin;
 
 @Service
 public class CustomerDetailServiceImp implements UserDetailsService {
@@ -17,7 +17,7 @@ public class CustomerDetailServiceImp implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Customer customer = customerClient.findByEmail(username);
+		CustomerLogin customer = customerClient.findByEmail(username);
 		if(customer == null) {
 			throw new UsernameNotFoundException("User login" + username + "not found");
 		}
